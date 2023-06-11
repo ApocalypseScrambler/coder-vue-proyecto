@@ -1,0 +1,170 @@
+[
+	{
+		"id": 1,
+		"nombre": "Clásica",
+		"descripcion": "Hamburguesa de carne, lechuga, tomate, cebolla, queso cheddar, papas fritas y gaseosa.",
+		"precio": 2000,
+		"imagen": "https://media-cdn.tripadvisor.com/media/photo-s/16/5d/6b/6d/hamburguesa-la-normalita.jpg"
+	},
+	{
+		"id": 2,
+		"nombre": "BBQ",
+		"descripcion": "Hamburguesa de carne con salsa BBQ, tocino, cebolla caramelizada, queso suizo, papas fritas y gaseosa.",
+		"precio": 2300,
+		"imagen": "https://chefeel.com/chefgeneralfiles/2021/07/front-view-burger-on-stand-scaled.jpg"
+	},
+	{
+		"id": 3,
+		"nombre": "Hawaiana",
+		"descripcion": "Hamburguesa de pollo con rodajas de piña, jamón, lechuga, papas fritas y gaseosa.",
+		"precio": 2200,
+		"imagen": "https://chefeel.com/chefgeneralfiles/2022/05/776.jpg"
+	},
+	{
+		"id": 4,
+		"nombre": "Vegana",
+		"descripcion": "Hamburguesa vegana de lentejas y quinoa, aguacate, tomate, espinacas, papas fritas y gaseosa.",
+		"precio": 2500,
+		"imagen": "https://chefeel.com/chefgeneralfiles/2022/02/Sin-titulo-5-scaled-880x785.jpg"
+	},
+	{
+		"id": 5,
+		"nombre": "Mexicana",
+		"descripcion": "Hamburguesa de carne con guacamole, jalapeños, queso Monterrey Jack, salsa picante, papas fritas y gaseosa.",
+		"precio": 2400,
+		"imagen": "https://content-cocina.lecturas.com/medio/2019/02/12/hamburguesa_de_secreto_y_ternera_con_guacamole_y_nachos_de_maiz_f7042d07_600x600.jpg"
+	},
+	{
+		"id": 6,
+		"nombre": "Criolla",
+		"descripcion": "Hamburguesa de carne con chimichurri, huevo frito, panceta, lechuga, papas fritas y gaseosa.",
+		"precio": 2100,
+		"imagen": "https://i.pinimg.com/originals/f2/4d/28/f24d28b6fb0ac1d48c39b2a911952757.jpg"
+	},
+	{
+		"id": 7,
+		"nombre": "Mediterránea",
+		"descripcion": "Hamburguesa de cordero con pepino, tomate, rúcula, yogur de menta, papas fritas y gaseosa.",
+		"precio": 2600,
+		"imagen": "https://chefeel.com/chefgeneralfiles/2022/08/sal-10-880x828.jpg"
+	},
+	{
+		"id": 8,
+		"nombre": "Italiana",
+		"descripcion": "Hamburguesa de carne con pesto, mozzarella, tomate seco, rúcula, papas fritas y gaseosa.",
+		"precio": 2700,
+		"imagen": "https://www.tucasaclub.com/files/content/1200x670_163.jpg"
+	},
+	{
+		"id": 9,
+		"nombre": "Ranchera",
+		"descripcion": "Hamburguesa de pollo empanizado con aderezo ranch, queso cheddar, tomate, cebolla frita, papas fritas y gaseosa.",
+		"precio": 2300,
+		"imagen": "https://buenprovecho.hn/wp-content/uploads/2021/01/Receta-mayo1.jpg"
+	},
+	{
+		"id": 10,
+		"nombre": "Australiana",
+		"descripcion": "Hamburguesa de carne con remolacha, piña, huevo frito, queso, papas fritas y gaseosa.",
+		"precio": 2400,
+		"imagen": "https://www.hazteveg.com/img/recipes/full/202005/R28-25274.jpg"
+	},
+	{
+		"id": 11,
+		"nombre": "Clásica con queso azul",
+		"descripcion": "Hamburguesa de carne con queso azul, cebolla caramelizada, rúcula, papas fritas y gaseosa.",
+		"precio": 2500,
+		"imagen": "https://hamburguesaadomicilio.com/images/hamburguesa-queso-azul-cebolla-detalle.jpg"
+	},
+	{
+		"id": 12,
+		"nombre": "BBQ con aros de cebolla",
+		"descripcion": "Hamburguesa de carne con salsa BBQ, aros de cebolla crujientes, queso cheddar, papas fritas y gaseosa.",
+		"precio": 2600,
+		"imagen": "https://i.pinimg.com/736x/df/db/e4/dfdbe44d79ba62cb6f3a4d1742b3ec19--salsa-bbq-parrilla.jpg"
+	},
+	{
+		"id": 13,
+		"nombre": "Caprese",
+		"descripcion": "Hamburguesa de pollo con mozzarella fresca, tomate, albahaca, balsámico, papas fritas y gaseosa.",
+		"precio": 2800,
+		"imagen": "https://imag.bonviveur.com/presentacion-de-la-hamburguesa-de-pollo-y-queso.jpg"
+	},
+	{
+		"id": 14,
+		"nombre": "Vegana estilo falafel",
+		"descripcion": "Hamburguesa vegana de falafel, hummus, pepino, tomate, papas fritas y gaseosa.",
+		"precio": 2500,
+		"imagen": "https://www.deliveryplazatempo.com/uploads/restorants/22a47eca-8cee-4e9d-9016-288ed2f918b5_large.jpg"
+	},
+	{
+		"id": 15,
+		"nombre": "Cajún",
+		"descripcion": "Hamburguesa de carne sazonada con especias cajún, queso pepper jack, cebolla morada, jalapeños, papas fritas y gaseosa.",
+		"precio": 2400,
+		"imagen": "https://2.bp.blogspot.com/-AoAz4KWXOPg/Wi9FTdlpMQI/AAAAAAAAB0Y/2BoPwZRZ61oGOTedh_T33nd1Kmr3_AxKACLcBGAs/s640/2017-12-11%2B11.jpg"
+	},
+	{
+		"id": 16,
+		"nombre": "De la casa",
+		"descripcion": "Hamburguesa de carne con champiñones salteados, cebolla caramelizada, queso suizo, papas fritas y gaseosa.",
+		"precio": 2700,
+		"imagen": "https://cdn7.kiwilimon.com/recetaimagen/1463/960x640/11949.jpg.jpg"
+	},
+	{
+		"id": 17,
+		"nombre": "Asiática",
+		"descripcion": "Hamburguesa de pollo con salsa teriyaki, encurtidos de jengibre, cilantro, lechuga, papas fritas y gaseosa.",
+		"precio": 2500,
+		"imagen": "https://buenprovecho.hn/wp-content/uploads/2021/01/Hamburguesa-de-pollo-frito-y-salsa-tartara.png"
+	},
+	{
+		"id": 18,
+		"nombre": "Vegana estilo barbacoa",
+		"descripcion": "Hamburguesa vegana de frijoles negros con salsa barbacoa, aguacate, cebolla frita, papas fritas y gaseosa.",
+		"precio": 2600,
+		"imagen": "https://i0.wp.com/macabites.com/wp-content/uploads/2018/01/hamburguesa-de-frijoles-final.jpg"
+	},
+	{
+		"id": 19,
+		"nombre": "Marinera",
+		"descripcion": "Hamburguesa de pescado empanizado con salsa tártara, lechuga, tomate, papas fritas y gaseosa.",
+		"precio": 2800,
+		"imagen": "http://www.recetario-cocina.com/archivosbd/hamburguesa-de-pescado-con-salsa-tartara.jpg"
+	},
+	{
+		"id": 20,
+		"nombre": "Picante",
+		"descripcion": "Hamburguesa de carne con salsa picante, jalapeños, pimientos asados, queso pepper jack, papas fritas y gaseosa.",
+		"precio": 2400,
+		"imagen": "https://www.amomikitchenaid.com/wp-content/uploads/2016/06/posteo60-800x600.png"
+	},
+	{
+		"id": 21,
+		"nombre": "Doble queso",
+		"descripcion": "Hamburguesa de carne con doble queso cheddar, tocino, cebolla caramelizada, papas fritas y gaseosa.",
+		"precio": 2700,
+		"imagen": "https://img.freepik.com/fotos-premium/hamburguesa-doble-ternera-tocino-queso-cheddar-patatas-fritas-sobre-tabla-madera_269313-503.jpg"
+	},
+	{
+		"id": 22,
+		"nombre": "Ranchera con huevo",
+		"descripcion": "Hamburguesa de pollo empanizado con aderezo ranch, huevo frito, queso suizo, lechuga, papas fritas y gaseosa.",
+		"precio": 2500,
+		"imagen": "https://sabrosano.com/wp-content/uploads/2020/04/5-2.jpg"
+	},
+	{
+		"id": 23,
+		"nombre": "Alemana",
+		"descripcion": "Hamburguesa de carne con chucrut, mostaza, pepinillos, queso suizo, papas fritas y gaseosa.",
+		"precio": 2600,
+		"imagen": "https://www.hengstenberg.es/userFiles/Image/ES/04_Recetas/hamburguesa_de_queso_con_pepino_y_chucrut/hamburguesa_de_queso_con_pepino_y_chucrut.jpg"
+	},
+	{
+		"id": 24,
+		"nombre": "Vegana estilo mediterráneo",
+		"descripcion": "Hamburguesa vegana de garbanzos con hummus, berenjena asada, pimiento rojo, lechuga, papas fritas y gaseosa.",
+		"precio": 2800,
+		"imagen": "https://images.hola.com/imagenes/cocina/recetas/20201021177676/hamburguesas-saludables-veganas-garbanzos/0-880-471/hamburguesa-garbanzos-pimiento-t.jpg"
+	}
+]
