@@ -8,41 +8,27 @@
                 Vue
             </a>
             <a class="navbar-brand logos">
-                <img src="../assets/person.svg" alt="Logo" width="40" height="30"
-                        class="d-inline-block align-text-top">
-                <img src="../assets/cart.svg" alt="Logo" width="40" height="30"
-                    class="d-inline-block align-text-top">
+                <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
+                    class="d-inline-block align-text-top">Login</b-button>
+                <b-button id="show-btn" @click="$bvModal.show('bv-modal-carrito')"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
+                    class="d-inline-block align-text-top">Carrito</b-button>
+                
             </a>
-            <button @click="openUsuario">Abrir Modal</button>
-            <VentanaUsuario 
-                :showUsuario="showUsuario"
-                @closeUsuario="closeUsuario"  
-            />
+            <ventanaLogin/><ventanaCarrito/>
         </div>
     </nav>
 </template>
 
 <script>
 
-import VentanaUsuario from './VentanaUsuario.vue';
+import ventanaCarrito from './ventanaCarrito.vue';
+import ventanaLogin from './ventanaLogin.vue';
 
 export default {
     components: {        
-        VentanaUsuario
+        ventanaLogin, ventanaCarrito
     },
-    data: () => ({
-        showUsuario: false,
-        showCarrito: false
-    }),
-
-    methods: {
-        openUsuario() {
-            this.showUsuario = true
-        },
-        openCarrito() {
-            this.showCarrito = true
-        },
-    }
+    
 }
 
 </script>
