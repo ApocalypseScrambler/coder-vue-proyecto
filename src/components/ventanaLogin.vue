@@ -1,50 +1,32 @@
 <template>
-  <b-modal id="bv-modal-login" hide-footer>
-    <template #modal-title>
-      Login
-    </template>
-    <form class="row g-3 needs-validation" novalidate>
+  <div>
 
-      <b-form-input v-model="usuario" placeholder="Usuario"></b-form-input>
-      <b-form-input v-model="contraseña" placeholder="Contraseña" type="password"></b-form-input>
-      <p>¿Aún no estás registrado? <b-button id="show-btn"
-          @click="$bvModal.show('bv-modal-registro')">Registrarse</b-button></p>
+    <UsernameInput/>
+    <PasswordInput/>
 
-      <ventana-registro />
-      <b-button type="submit" class="mt-3" block @click=validar()>Ingresar</b-button>
-    </form>
-    <ventana-mensaje :titulo="titulo" :mensaje="mensaje" />
-  </b-modal>
+    <button @click="">INGRESAR</button>
+
+    <p>
+      ¿Aún no estás registrado? Registrate 
+      <a href="" @click.prevent="">aquí.</a>
+    </p>
+
+  </div>
 </template>
-  
-<script>
-import VentanaMensaje from './VentanaMensaje.vue';
 
-import VentanaRegistro from './VentanaRegistro.vue';
+<script>
+
+import UsernameInput from '@/components/user/inputs/UsernameInput.vue'
+import PasswordInput from '@/components/user/inputs/PasswordInput.vue'
 
 export default {
-
-  name: 'ventanaLogin',
+  data: () => ({
+    users: []
+  }),
   components: {
-    VentanaRegistro, VentanaMensaje
+    UsernameInput,
+    PasswordInput
   },
-  data() {
-    return {
-      usuario: '',
-      contraseña: '',
-      administrador: false
-    }
-  },
-  methods: {
-    validar() {
-      if (this.usuario == '' || this.contraseña == '') {
-        this.titulo = "Advertencia"
-        this.mensaje = "Debes rellenar todos los campos"
-        this.$bvModal.show('bv-modal-mensaje')
-      } else {
-        this.$bvModal.hide('bv-modal-login')
-      }
-    }
-  }
+  
 }
 </script>

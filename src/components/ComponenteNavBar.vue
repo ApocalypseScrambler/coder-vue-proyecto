@@ -11,8 +11,9 @@
                 <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
                     class="d-inline-block align-text-top">Login</b-button>
                     
-                <b-button id="show-btn" @click="$bvModal.show('bv-modal-carrito')"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
-                    class="d-inline-block align-text-top">Carrito</b-button>
+                <button><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
+                    class="d-inline-block align-text-top">Carrito</button>
+                    
                     <div class="contadorCarrito">{{ carritoCantidad }}</div>
             </a>
             

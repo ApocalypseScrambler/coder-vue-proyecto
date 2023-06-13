@@ -10,8 +10,9 @@
         <componente-contador-producto :productoId="item.id" />
 
         <button
-          @click="AgregarAlCarrito"
+          @click="agregarAlCarrito"
           :disabled="agregado"
+          :enabled="agregado"
           :class="btnColor"
         >
           {{ agregado ? "Agregado" : "Agregar al carrito" }}
@@ -41,19 +42,20 @@ export default {
   },
   data: () => ({
     CarritoStore,
+    ComponenteContadorProducto,
   }),
   computed: {
     agregado() {
       return this.CarritoStore.findById(this.item.id);
     },
     btnColor() {
-      return this.agregado ? "btn-secondary" : "btn-primary";
+      return this.agregado ? "btn btn-secondary" : "btn btn-primary";
     },
   },
 
   methods: {
-    AgregarAlCarrito() {
-        this.CarritoStore.AgregarAlCarrito(this.item);
+    agregarAlCarrito() {
+        this.CarritoStore.agregarAlCarrito(this.item);
     },
   },
 };

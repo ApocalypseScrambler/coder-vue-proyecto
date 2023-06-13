@@ -14,12 +14,20 @@ export const CarritoStore = {
     return this.carrito.reduce((total, item) => total + item.cantidad, 0);
   },
 
-  AgregarAlCarrito(item) {
+  carritoTotalPrecio() {
+    return this.carrito.reduce((total, item) => total + item.subtotal, 0)
+  },
+  
+  agregarAlCarrito(item) {
     this.carrito.push({
       ...item,
       cantidad: 1,
       subtotal: item.precio,
     });
+  },
+  removerDelCarrito(id) {
+    const index = this.carrito.findIndex(item => item.id === id)
+    this.carrito.splice(index, 1)
   },
   restoCantidad(id) {
     const enCarrito = this.findById(id);

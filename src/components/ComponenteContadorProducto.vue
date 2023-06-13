@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="restar">➖️</button>
-    <span>{{ contador }}</span>
-    <button @click="sumar">➕️</button>
+    <button class="btn btn-primary btn-sm" @click="restar" :disabled="noEnCarrito">➖️</button>
+    <span class:>{{ contador }}</span>
+    <button class="btn btn-primary btn-sm" @click="sumar" :disabled="noEnCarrito">➕️</button>
   </div>
 </template>
   
@@ -17,19 +17,20 @@ export default {
   },
   data: () => ({
     CarritoStore,
-    contador: 1
+    contador: 1,
   }),
 
   methods: {
     restar() {
       this.CarritoStore.restoCantidad(this.productoId);
-      if (this.contador <= 1) {
-        this.contador=1
-      } else { this.contador--}
     },
     sumar() {
       this.CarritoStore.aumentoCantidad(this.productoId);
-      this.contador++;
+    },
+  computed: {
+      noEnCarrito() {
+        return !this.carrito.findById(this.productoId);
+      },
     },
   },
 };
