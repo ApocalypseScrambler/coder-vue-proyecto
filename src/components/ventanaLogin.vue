@@ -10,7 +10,7 @@
       <p>¿Aún no estás registrado? <b-button id="show-btn"
           @click="$bvModal.show('bv-modal-registro')">Registrarse</b-button></p>
 
-      <ventanaRegistro />
+      <ventana-registro />
       <b-button type="submit" class="mt-3" block @click=validar()>Ingresar</b-button>
     </form>
     <ventana-mensaje :titulo="titulo" :mensaje="mensaje" />
@@ -18,15 +18,15 @@
 </template>
   
 <script>
-import VentanaMensaje from './ventanaMensaje.vue';
+import VentanaMensaje from './VentanaMensaje.vue';
 
-import ventanaRegistro from './ventanaRegistro.vue';
+import VentanaRegistro from './VentanaRegistro.vue';
 
 export default {
 
   name: 'ventanaLogin',
   components: {
-    ventanaRegistro, VentanaMensaje
+    VentanaRegistro, VentanaMensaje
   },
   data() {
     return {

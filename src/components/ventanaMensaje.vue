@@ -13,7 +13,7 @@
 
 export default {
 
-    name: 'ventanaMensaje',
+    name: 'VentanaMensaje',
     props: {
         titulo: String,
         mensaje: String

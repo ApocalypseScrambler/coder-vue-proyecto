@@ -10,30 +10,44 @@
             <a class="navbar-brand logos">
                 <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
                     class="d-inline-block align-text-top">Login</b-button>
+                    
                 <b-button id="show-btn" @click="$bvModal.show('bv-modal-carrito')"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
                     class="d-inline-block align-text-top">Carrito</b-button>
-                
+                    <div class="contadorCarrito">{{ carritoCantidad }}</div>
             </a>
-            <ventanaLogin/><ventanaCarrito/>
+            
         </div>
+        
     </nav>
 </template>
 
 <script>
-
-import ventanaCarrito from './ventanaCarrito.vue';
-import ventanaLogin from './ventanaLogin.vue';
+import { CarritoStore } from "@/stores/CarritoStore";
 
 export default {
-    components: {        
-        ventanaLogin, ventanaCarrito
-    },
-    
+    data: () => ({ 
+        CarritoStore
+  }),
+  computed: {
+    carritoCantidad() {
+      return this.CarritoStore.carritoCantidad()
+    }
+  }
 }
 
 </script>
 
 <style scoped>
+.contadorCarrito {
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
 .container-fluid {
     display: flex;
     justify-content: space-between;

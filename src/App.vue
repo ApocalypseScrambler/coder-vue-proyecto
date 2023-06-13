@@ -1,8 +1,8 @@
 <template>
   <div>
-    <nav-bar />
+    <componente-nav-bar />
     <div class="contenedor-cards">
-      <componente-card v-for="postre in postres" :key="postre.id" :postre="postre" />
+      <componente-cards v-for="item in items" :key="item.id" :item="item" />
     </div>
   </div>
 </template>
@@ -10,18 +10,18 @@
 <script>
 import axios from 'axios';
 
-import componenteCard from './components/componenteCard.vue';
-import NavBar from './components/NavBar.vue';
+import ComponenteCards from './components/ComponenteCards.vue';
+import ComponenteNavBar from './components/ComponenteNavBar.vue';
 
-const url = 'https://dav-leda.github.io/api/products'
+const url = '../json/menu.json' //'https://dav-leda.github.io/api/products'
 
 export default {
   name: 'App',
   components: {
-    componenteCard, NavBar
+    ComponenteCards, ComponenteNavBar
   },
   data: () => ({
-    postres: []
+    items: []
   }),
   created() {
     this.getData(url)
@@ -30,7 +30,7 @@ export default {
     async getData(url) {
       try {
         const { data } = await axios.get(url)
-        this.postres = data
+        this.items = data
       } catch (error) {
         console.log(error)
       }
