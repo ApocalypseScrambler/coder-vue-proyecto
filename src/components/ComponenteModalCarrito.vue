@@ -4,7 +4,7 @@
       Carrito
     </template>
     <div class="d-block text-center">
-      <table class="table">
+      <table class="table" v-if="productosEnCarrito.length">
               <thead>
                 <tr>
                   <th scope="col">Producto</th>
@@ -35,6 +35,7 @@
                 </tr>
               </tfoot>
             </table>
+            <p v-else>Aún no has agregado productos en el carrito.</p>
     </div>
     <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-carrito')">Cerrar</b-button>
   </b-modal>

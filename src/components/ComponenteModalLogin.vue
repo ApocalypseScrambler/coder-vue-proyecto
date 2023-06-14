@@ -18,14 +18,21 @@
 
 <script>
 import ComponenteModalRegistro from './ComponenteModalRegistro.vue'
+import { UsuarioStore } from '../stores/UsuarioStore';
 
 export default {
   components: { ComponenteModalRegistro },
   name: "ComponenteModalLogin",
   data: () => ({
+    UsuarioStore,
     user: '',
     password: ''
   }),
   
+  computed: {
+    productosEnCarrito() {
+      return this.CarritoStore.carrito;
+    },
+
 }
 </script>

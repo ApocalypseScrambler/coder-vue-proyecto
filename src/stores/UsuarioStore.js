@@ -6,7 +6,7 @@ const endpoint = "/users";
 const url = mockApiUrl + endpoint;
 
 export const UsuarioStore = {
-  Usuarios: [],
+  usuarios: [],
 
   created() {
     this.getData(url);
@@ -20,5 +20,16 @@ export const UsuarioStore = {
         console.log(error);
       }
     },
+  },
+
+  findById(id) {
+    return this.carrito.find((item) => item.id === id);
+  },
+
+  findUser(username) {
+    return this.usuarios.find((usuario) => usuario.username === username);
+  },
+  findPassword(password) {
+    return this.usuarios.find((usuario) => usuario.password === password);
   },
 };
