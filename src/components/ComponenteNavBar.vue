@@ -9,16 +9,15 @@
                 Vue
             </a>
             <a class="navbar-brand logos">
-                <!-- <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
-                    class="d-inline-block align-text-top">Login</b-button> -->
+                <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
+                    class="d-inline-block align-text-top">Login</b-button>
                     
-                    <button @click="showModal=true" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaCarrito">
-                        <img src="../assets/cart.svg" alt="Logo" width="40" height="30"
-                    class="d-inline-block align-text-top">Carrito</button>
+                    <b-button id="show-btn" @click="$bvModal.show('bv-modal-carrito')"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
+                    class="d-inline-block align-text-top">Carrito</b-button>
                     
                     <div class="contadorCarrito">{{ carritoCantidad }}</div>
             </a>
-            <ventana-carrito/>
+            <componente-modal-carrito /><componente-modal-login/>
         </div>
         
     </nav>
@@ -26,21 +25,22 @@
 
 <script>
 import { CarritoStore } from "@/stores/CarritoStore";
-import ventanaCarrito from './ventanaCarrito.vue';
+import ComponenteModalCarrito from './ComponenteModalCarrito.vue';
+import ComponenteModalLogin from "./ComponenteModalLogin.vue";
 
 export default {
     components: {
-        ventanaCarrito
+        ComponenteModalCarrito,
+        ComponenteModalLogin
     },
     data: () => ({ 
         CarritoStore,
-        showModal: false
   }),
   computed: {
     carritoCantidad() {
       return this.CarritoStore.carritoCantidad()
     }
-  }
+  },
 }
 
 </script>

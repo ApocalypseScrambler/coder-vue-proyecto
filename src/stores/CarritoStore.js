@@ -18,7 +18,7 @@ export const CarritoStore = {
     return this.carrito.reduce((total, item) => total + item.subtotal, 0)
   },
   
-  agregarAlCarrito(item) {
+   agregarAlCarrito(item) {
     this.carrito.push({
       ...item,
       cantidad: 1,
