@@ -15,21 +15,23 @@ export const UsuarioStore = {
     async getData(url) {
       try {
         const { data } = await axios.get(url);
-        this.items = data;
+        this.usuarios = data;
       } catch (error) {
         console.log(error);
       }
     },
   },
 
-  findById(id) {
-    return this.carrito.find((item) => item.id === id);
-  },
-
   findUser(username) {
-    return this.usuarios.find((usuario) => usuario.username === username);
+    const usuario = this.usuarios.find((usuario) => usuario.username === username);
+    return usuario ? usuario : ''
   },
   findPassword(password) {
-    return this.usuarios.find((usuario) => usuario.password === password);
+    const pass = this.usuarios.find((password) => usuario.password === password);
+    return pass ? pass : ''
+  },
+  productoCantidad(id) {
+    const enCarrito = this.findById(id);
+    return enCarrito ? enCarrito.cantidad : 0;
   },
 };
