@@ -27,11 +27,11 @@ export default {
     sumar() {
       this.CarritoStore.aumentoCantidad(this.productoId);
     },
+  },
   computed: {
       noEnCarrito() {
-        return !this.carrito.findById(this.productoId);
+        return !this.CarritoStore.findById(this.productoId);
       },
     },
-  },
-};
+  };
 </script>

@@ -30,7 +30,7 @@
                   <td>Total:</td>
                   <td></td>
                   <td></td>
-                  <td>$ {{ total() }}</td>
+                  <td>$ {{ total }}</td>
                   <td></td>
                 </tr>
               </tfoot>
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     remove(id) {
-      this.CarritoStore.removerDeCarrito(id);
+      this.CarritoStore.removerDelCarrito(id);
     },
   },
 };

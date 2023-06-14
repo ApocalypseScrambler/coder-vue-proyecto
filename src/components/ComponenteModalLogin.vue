@@ -5,8 +5,8 @@
     </template>
     <form class="row g-3 needs-validation" novalidate>
 
-      <b-form-input v-model="usuario" placeholder="Usuario"></b-form-input>
-      <b-form-input v-model="contraseña" placeholder="Contraseña" type="password"></b-form-input>
+      <b-form-input id="user" v-model="user" placeholder="Usuario"></b-form-input>
+      <b-form-input id="password" v-model="password" placeholder="Contraseña" type="password"></b-form-input>
       <p>¿Aún no estás registrado? <b-button id="show-btn"
           @click="$bvModal.show('bv-modal-registro')">Registrarse</b-button></p>
 
@@ -23,7 +23,8 @@ export default {
   components: { ComponenteModalRegistro },
   name: "ComponenteModalLogin",
   data: () => ({
-    users: []
+    user: '',
+    password: ''
   }),
   
 }
