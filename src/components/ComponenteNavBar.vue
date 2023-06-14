@@ -1,5 +1,6 @@
 <template>
     <nav class="navbar bg-body-tertiary">
+        <ventana-carrito/>
         <div class="container-fluid">
             <a class="navbar-brand">
                 <img src="../assets/coder.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -8,10 +9,11 @@
                 Vue
             </a>
             <a class="navbar-brand logos">
-                <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
-                    class="d-inline-block align-text-top">Login</b-button>
+                <!-- <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
+                    class="d-inline-block align-text-top">Login</b-button> -->
                     
-                <button><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaCarrito">
+                        <img src="../assets/cart.svg" alt="Logo" width="40" height="30"
                     class="d-inline-block align-text-top">Carrito</button>
                     
                     <div class="contadorCarrito">{{ carritoCantidad }}</div>
@@ -24,8 +26,12 @@
 
 <script>
 import { CarritoStore } from "@/stores/CarritoStore";
+import ventanaCarrito from './ventanaCarrito.vue';
 
 export default {
+    components: {
+        ventanaCarrito
+    },
     data: () => ({ 
         CarritoStore
   }),
