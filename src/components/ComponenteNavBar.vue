@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar bg-body-tertiary">
-        <ventana-carrito/>
+        
         <div class="container-fluid">
             <a class="navbar-brand">
                 <img src="../assets/coder.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -12,13 +12,13 @@
                 <!-- <b-button id="show-btn" @click="$bvModal.show('bv-modal-login')"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
                     class="d-inline-block align-text-top">Login</b-button> -->
                     
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaCarrito">
+                    <button @click="showModal=true" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaCarrito">
                         <img src="../assets/cart.svg" alt="Logo" width="40" height="30"
                     class="d-inline-block align-text-top">Carrito</button>
                     
                     <div class="contadorCarrito">{{ carritoCantidad }}</div>
             </a>
-            
+            <ventana-carrito/>
         </div>
         
     </nav>
@@ -33,7 +33,8 @@ export default {
         ventanaCarrito
     },
     data: () => ({ 
-        CarritoStore
+        CarritoStore,
+        showModal: false
   }),
   computed: {
     carritoCantidad() {
