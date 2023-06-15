@@ -27,7 +27,7 @@ export const UsuarioStore = {
     return usuario ? usuario : ''
   },
   findPassword(password) {
-    const pass = this.usuarios.find((password) => usuario.password === password);
+    const pass = this.usuarios.find((pass) => pass.password === password);
     return pass ? pass : ''
   },
   productoCantidad(id) {
