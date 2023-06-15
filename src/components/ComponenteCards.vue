@@ -5,7 +5,7 @@
       <h5 class="card-title">{{ item.nombre }}</h5>
       <p class="card-text">{{ item.descripcion }}</p>
       <h5>$ {{ item.precio }}</h5>
-      
+
       <footer>
         <componente-contador-producto :productoId="item.id" />
 
@@ -55,7 +55,7 @@ export default {
 
   methods: {
     agregarAlCarrito() {
-        this.CarritoStore.agregarAlCarrito(this.item);
+      this.CarritoStore.agregarAlCarrito(this.item);
     },
   },
 };
@@ -64,5 +64,15 @@ export default {
 <style scoped>
 .card-img-top {
   height: 20rem;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem
 }
 </style>

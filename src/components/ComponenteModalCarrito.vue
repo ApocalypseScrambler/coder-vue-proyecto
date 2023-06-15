@@ -4,7 +4,7 @@
       Carrito
     </template>
     <div class="d-block text-center">
-      <table class="table" v-if="productosEnCarrito.length">
+      <table class="table table-dark" v-if="productosEnCarrito.length">
               <thead>
                 <tr>
                   <th scope="col">Producto</th>
@@ -65,4 +65,3 @@ export default {
   },
 };
 </script>
-  

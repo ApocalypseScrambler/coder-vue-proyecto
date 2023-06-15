@@ -55,6 +55,8 @@ export default {
   background-color: red;
   color: white;
   text-align: center;
+  left: -32px;
+  top: -14px;
 }
 .container-fluid {
     display: flex;

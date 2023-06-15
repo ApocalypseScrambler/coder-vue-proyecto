@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="botones">
     <button class="btn btn-primary btn-sm" @click="restar" :disabled="noEnCarrito">➖️</button>
     <span class:>{{ contador }}</span>
     <button class="btn btn-primary btn-sm" @click="sumar" :disabled="noEnCarrito">➕️</button>
@@ -35,3 +35,11 @@ export default {
     },
   };
 </script>
+
+<style scoped>
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+</style>

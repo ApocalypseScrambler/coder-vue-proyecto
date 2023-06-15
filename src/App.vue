@@ -8,37 +8,36 @@
 </template>
 
 <script>
+import axios from "axios";
 
-import axios from 'axios';
+import ComponenteCards from "./components/ComponenteCards.vue";
+import ComponenteNavBar from "./components/ComponenteNavBar.vue";
 
-import ComponenteCards from './components/ComponenteCards.vue';
-import ComponenteNavBar from './components/ComponenteNavBar.vue';
-
-const url = '../json/menu.json' //'https://dav-leda.github.io/api/products'
+const url = "../json/menu.json"; //'https://dav-leda.github.io/api/products'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    ComponenteCards, ComponenteNavBar
+    ComponenteCards,
+    ComponenteNavBar,
   },
   data: () => ({
-    items: []
+    items: [],
   }),
   created() {
-    this.getData(url)
+    this.getData(url);
   },
   methods: {
     async getData(url) {
       try {
-        const { data } = await axios.get(url)
-        this.items = data
+        const { data } = await axios.get(url);
+        this.items = data;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-  }
-}
-
+    },
+  },
+};
 </script>
 
 
@@ -49,6 +48,6 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 1.5rem;
-  margin: 1rem;
+  margin: 2rem 5rem;
 }
 </style>
