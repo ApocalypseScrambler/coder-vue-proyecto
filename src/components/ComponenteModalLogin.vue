@@ -34,5 +34,6 @@ export default {
       return this.CarritoStore.carrito;
     },
 
+},
 }
 </script>
