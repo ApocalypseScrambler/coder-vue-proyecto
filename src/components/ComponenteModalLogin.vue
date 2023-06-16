@@ -1,7 +1,7 @@
 <template>
   <b-modal id="bv-modal-login" hide-footer>
     <template #modal-title> Login </template>
-    <form class="row g-3 needs-validation" novalidate>
+    <form class="row g-3 needs-validation" @submit.prevent="$bvModal.hide('bv-modal-login')" novalidate>
       <b-form-input id="user" v-model="user" placeholder="Usuario"></b-form-input>
       <b-form-input id="password" v-model="password" placeholder="Contraseña" type="password"></b-form-input>
       <p>
@@ -51,15 +51,12 @@ export default {
   },
     validar(user, password) {
       if (this.UsuarioStore.findPassword(password) && this.UsuarioStore.findUser(user)) {
-        alert("Bienvenido");
+        alert("Bienvenido");        
       }
       else {
         alert("No bienvenido");
-
       }
-
     },
-
   },
 }
 
