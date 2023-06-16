@@ -62,7 +62,15 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-
+nav {
+  display: inline-block;
+  width: 100%;
+  min-width: 20rem;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
 .logos {
     display: flex;
     gap: 1rem;

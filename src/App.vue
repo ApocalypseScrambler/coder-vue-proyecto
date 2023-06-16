@@ -44,10 +44,10 @@ export default {
 
 <style scoped>
 .contenedor-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 1.5rem;
-  margin: 2rem 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* max-width: 80vw; */
+  margin: 9rem auto;
 }
 </style>
