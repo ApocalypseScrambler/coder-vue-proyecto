@@ -1,12 +1,12 @@
 <template>
   <div class="botones">
     <button class="btn btn-primary btn-sm" @click="restar" :disabled="noEnCarrito">➖️</button>
-    <span class:>{{ contador }}</span>
+    <span>{{ cantidad || 1 }}</span>
     <button class="btn btn-primary btn-sm" @click="sumar" :disabled="noEnCarrito">➕️</button>
   </div>
 </template>
   
-  <script>
+<script>
 import { CarritoStore } from "@/stores/CarritoStore";
 
 export default {
@@ -29,11 +29,14 @@ export default {
     },
   },
   computed: {
-      noEnCarrito() {
-        return !this.CarritoStore.findById(this.productoId);
-      },
+    noEnCarrito() {
+      return !this.CarritoStore.findById(this.productoId);
     },
-  };
+    cantidad() {
+      return this.CarritoStore.productoCantidad(this.productoId)
+    },
+  },
+};
 </script>
 
 <style scoped>
