@@ -1,6 +1,13 @@
 <template>
   <div class="card">
-    <img :src="item.imagen" class="card-img-top" :alt="item.nombre" />
+    <img
+    loading="lazy"
+    :style="{ opacity }"
+    @load="opacity = 1"
+    :src="item.imagen"
+    :alt="item.nombre"
+    class="card-img-top"
+    />
     <div class="card-body">
       <h5 class="card-title">{{ item.nombre }}</h5>
       <p class="card-text">{{ item.descripcion }}</p>
@@ -38,6 +45,7 @@ export default {
   data: () => ({
     CarritoStore,
     ComponenteContadorProducto,
+    opacity: 0
   }),
   computed: {
     agregado() {
@@ -62,6 +70,7 @@ export default {
   width: auto;
   object-fit: cover;
   border-radius: 1rem 1rem 0 0;
+  transition: opacity 1s ease;
 }
 
 .precio, .card-title, .card-title {
