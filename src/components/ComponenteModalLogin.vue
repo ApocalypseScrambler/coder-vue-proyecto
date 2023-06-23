@@ -17,10 +17,10 @@
 
 <script>
 import ComponenteModalRegistro from "./ComponenteModalRegistro.vue";
-import { UsuarioStore } from "../stores/UsuarioStore";
+import { usuarioStore } from "../stores/usuarioStore";
 import axios from "axios";
 
-const mockApiUrl = "https://6488930d0e2469c038fe04c7.mockapi.io/api";
+const mockApiUrl = import.meta.env.VITE_API_USUARIOS;
 const endpoint = "/users";
 
 const url = mockApiUrl + endpoint;
@@ -30,7 +30,7 @@ export default {
   name: "ComponenteModalLogin",
 
   data: () => ({
-    UsuarioStore,
+    usuarioStore,
     user: "",
     password: "",
   }),
@@ -43,14 +43,14 @@ export default {
     async getData(url) {
     try {
       const { data } = await axios.get(url);
-      this.UsuarioStore.usuarios = data;
+      this.usuarioStore.usuarios = data;
       console.log(data)
     } catch (error) {
       console.log(error);
     }
   },
     validar(user, password) {
-      if (this.UsuarioStore.findPassword(password) && this.UsuarioStore.findUser(user)) {
+      if (this.usuarioStore.findPassword(password) && this.usuarioStore.findUser(user)) {
         alert("Bienvenido");        
       }
       else {
