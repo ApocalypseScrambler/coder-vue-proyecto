@@ -1,5 +1,5 @@
 
-export const UsuarioStore = {
+export const usuarioStore = {
   usuarios: [],
 
   findUser(username) {
