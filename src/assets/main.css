@@ -9,10 +9,9 @@
   color: black;
 }
 
-a,
-.green {
+a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: black;
   transition: 0.4s;
 }
 
@@ -23,10 +22,6 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 
   #app {
     display: grid;

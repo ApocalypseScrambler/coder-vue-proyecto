@@ -10,10 +10,11 @@
       </a>
 
       <ul class="logos">
-        <li class="myButton"><router-link to="/">Productos</router-link></li>
-        <li class="myButton"><router-link :to="{ name: 'login-view' }"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
-              class="d-inline-block align-text-top">Login</router-link></li>
-        <li class="myButton"><router-link :to="{ name: 'carrito-view' }"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
+        <li class="btn btn-light boton"><router-link to="/"><img src="../assets/hamburguer.svg" alt="Logo" width="40" height="30"
+              class="d-inline-block align-text-top">Productos</router-link></li>
+        <li class="btn btn-light boton"><router-link :to="{ name: 'login-view' }"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
+              class="d-inline-block align-text-top" > {{ usuarioLogueado }} </router-link></li>
+        <li class="btn btn-light boton"><router-link :to="{ name: 'carrito-view' }"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
               class="d-inline-block align-text-top">Carrito</router-link>
           <div class="contadorCarrito">{{ carritoCantidad }}</div>
         </li>
@@ -24,15 +25,22 @@
 </template>
 
 <script>
-import { CarritoStore } from "@/stores/CarritoStore";
+import router from '../router'
+import { CarritoStore } from "../stores/carritoStore";
+import { usuarioStore } from '../stores/usuarioStore';
 
 export default {
   data: () => ({
     CarritoStore,
+    usuarioStore
   }),
+  router: router,
   computed: {
     carritoCantidad() {
       return this.CarritoStore.carritoCantidad()
+    },
+    usuarioLogueado() {
+      return this.usuarioStore.usuarioLogueado
     }
   },
 }
@@ -56,8 +64,8 @@ li {
   background-color: red;
   color: white;
   text-align: center;
-  left: -32px;
-  top: -14px;
+  left: 75px;
+  top: -10px;
 }
 
 .container-fluid {
@@ -78,29 +86,11 @@ nav {
 .logos {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
-.myButton {
-	box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-	background-color:#768d87;
-	border-radius:5px;
-	border:1px solid #566963;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:11px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #2b665e;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-	background-color:#6c7c7c;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
+
+.boton {
+  height: 3rem;
+  border: 1px solid black;
 }
 </style>

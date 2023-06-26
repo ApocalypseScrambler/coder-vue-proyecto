@@ -1,9 +1,10 @@
 
 export const usuarioStore = {
   usuarios: [],
+  usuarioLogueado: "Login",
 
-  findUser(username) {
-    const usuario = this.usuarios.find((usuario) => usuario.username === username);
+  findUser(nombre) {
+    const usuario = this.usuarios.find((usuario) => usuario.nombre === nombre);
     return usuario ? usuario : ''
   },
   findPassword(password) {

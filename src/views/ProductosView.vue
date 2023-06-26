@@ -6,31 +6,25 @@
     
   
 <script>
-import axios from "axios";
+
 import ComponenteCards from "../components/ComponenteCards.vue";
-
-const mockApiUrl = import.meta.env.VITE_API_URL;
-const endpoint = "/productos";
-
-const url = mockApiUrl + endpoint;
+import serviceProductos from "../Utils/serviceProductos";
 
 export default {
-    name: "ComponenteCards",
+    name: "ProductosView",
     components: { ComponenteCards },
+    mounted () {
+        this.obtenerProductos()
+    },
     data: () => ({
         items: [],
+        serviceProductos: new serviceProductos()
     }),
-    created() {
-        this.getData(url);
-    },
     methods: {
-        async getData(url) {
-            try {
-                const { data } = await axios.get(url);
-                this.items = data;
-            } catch (error) {
-                console.log(error);
-            }
+        async obtenerProductos() {
+        let productos = await this.serviceProductos.obtenerProductos()
+        console.log(productos)
+        this.items = productos
         },
     },
 
