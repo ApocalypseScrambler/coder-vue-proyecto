@@ -15,7 +15,9 @@
           Productos</router-link></li>
         <li class="btn btn-light boton"><router-link :to="{ name: 'login-view' }">
           <i class="icono"><PersonaIcono /></i>
-          {{ userStore.usuarioLogueado }} </router-link></li>
+          {{ userStore.usuarioLogueado }} </router-link>
+          <p>{{ userStore.usuarioIsAdmin ? "Administrador" : "" }}</p>
+        </li>
         <li class="btn btn-light boton">
           <router-link :to="{ name: 'carrito-view' }">
             <i><CarritoIcono /></i>
@@ -47,9 +49,7 @@ export default {
     carritoCantidad() {
       return this.cartStore.carritoCantidad()
     },
-    usuarioLogueado() {
-      return this.cartStore.usuarioLogueado
-    }
+    
   },
 }
 
@@ -58,6 +58,12 @@ export default {
 <style scoped>
 li {
   list-style: none!important;
+}
+
+p {
+  color: red;
+  font-size: small;
+  top: -7px;
 }
 
 a {

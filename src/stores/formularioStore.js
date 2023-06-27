@@ -4,7 +4,7 @@ export default {
   formulario: {
     usuario: "",
     password: "",
-    nombre: "",
+    nombrecompleto: "",
     mail: "",
     telefono: ""
   },
@@ -20,7 +20,7 @@ export default {
     return new ValidacionPassword(this.formulario.password, this.submitted)
   },
   erroresNombre() {
-    return new validacionClase(this.formulario.nombre, this.submitted)
+    return new validacionClase(this.formulario.nombrecompleto, this.submitted)
   },
   erroresTelefono() {
     return new ValidacionTelefono(this.formulario.telefono, this.submitted)
