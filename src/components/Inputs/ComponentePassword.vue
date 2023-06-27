@@ -58,10 +58,13 @@ export default {
 </script>
 
 <style scoped>
+p {
+    color: red;
+}
 .contenedor {
     position: relative;
     margin: 2rem 2rem 0.4rem;
-    width: 80%;
+    width: 85%;
 }
 
 .visible {

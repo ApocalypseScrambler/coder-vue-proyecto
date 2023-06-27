@@ -2,7 +2,7 @@
   <div class="contenedor">
 
     <i class="icono">
-      <usuarioIcono />
+      <PersonaIcono style="width: 1rem; height: 1rem;"/>
     </i>
 
     <input type="text" v-model="nombre" placeholder="Nombre(s)" />
@@ -14,7 +14,7 @@
 </template>
   
 <script>
-import usuarioIcono from '../icons/UsuarioIcono.vue'
+import PersonaIcono from '../icons/PersonaIcono.vue'
 import formularioStore from '@/stores/formularioStore'
 
 export default {
@@ -22,7 +22,7 @@ export default {
   name: 'ComponenteNombre',
 
   components: {
-    usuarioIcono
+    PersonaIcono
   },
 
   data: () => ({
@@ -50,10 +50,13 @@ export default {
 </script>
 
 <style scoped>
+p {
+    color: red;
+}
 .contenedor {
   position: relative;
   margin: 2rem 2rem 0.4rem;
-  width: 80%;
+  width: 85%;
 }
 
 input {
@@ -63,7 +66,7 @@ input {
   padding: 0.5rem 1rem 0.5rem 3rem;
   outline: none;
   font-size: 1rem;
-  border: 1px solid lightgrey;
+  border: 1px solid lightgrey;  
 }
 
 .icono {
@@ -71,7 +74,7 @@ input {
   z-index: 1;
   border-right: 1px solid lightgrey;
   border-radius: 5px 0 0 5px;
-  padding: 0.3rem 0.5rem 0.4rem;
+  padding: 0.3rem 0.5rem 0.4rem;  
 }
 
 span {

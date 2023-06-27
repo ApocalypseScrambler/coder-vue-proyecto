@@ -10,12 +10,16 @@
       </a>
 
       <ul class="logos">
-        <li class="btn btn-light boton"><router-link to="/"><img src="../assets/hamburguer.svg" alt="Logo" width="40" height="30"
-              class="d-inline-block align-text-top">Productos</router-link></li>
-        <li class="btn btn-light boton"><router-link :to="{ name: 'login-view' }"><img src="../assets/person.svg" alt="Logo" width="40" height="30"
-              class="d-inline-block align-text-top" > {{ usuarioLogueado }} </router-link></li>
-        <li class="btn btn-light boton"><router-link :to="{ name: 'carrito-view' }"><img src="../assets/cart.svg" alt="Logo" width="40" height="30"
-              class="d-inline-block align-text-top">Carrito</router-link>
+        <li class="btn btn-light boton"><router-link to="/">
+          <i><HamburguesaIcono /></i>
+          Productos</router-link></li>
+        <li class="btn btn-light boton"><router-link :to="{ name: 'login-view' }">
+          <i class="icono"><PersonaIcono /></i>
+          {{ usuarioLogueado }} </router-link></li>
+        <li class="btn btn-light boton">
+          <router-link :to="{ name: 'carrito-view' }">
+            <i><CarritoIcono /></i>
+          Carrito</router-link>
           <div class="contadorCarrito">{{ carritoCantidad }}</div>
         </li>
       </ul>
@@ -28,8 +32,12 @@
 import router from '../router'
 import { CarritoStore } from "../stores/carritoStore";
 import { usuarioStore } from '../stores/usuarioStore';
+import CarritoIcono from '../components/icons/CarritoIcono.vue';
+import HamburguesaIcono from '../components/icons/HamburguesaIcono.vue';
+import PersonaIcono from '../components/icons/PersonaIcono.vue';
 
 export default {
+  components: { CarritoIcono, HamburguesaIcono, PersonaIcono },
   data: () => ({
     CarritoStore,
     usuarioStore
@@ -52,8 +60,15 @@ li {
   list-style: none!important;
 }
 
+a {
+  font-weight: 700;
+}
  .navbar{
     position: fixed;
+}
+.icono {
+  width: 40px;
+  height: 30px;
 }
 .contadorCarrito {
   border-radius: 50%;

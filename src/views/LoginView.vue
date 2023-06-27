@@ -36,12 +36,12 @@ export default {
     methods: {
         async obtenerUsuarios() {
         let usuarios = await this.serviceUsuarios.obtenerUsuarios()
-        console.log(usuarios)
         this.usuarioStore.usuarios = usuarios
+        console.log(this.usuarioStore.usuarios)
         },
     },
     validar(usuario, password) {
-
+      
       if (this.usuarioStore.findPassword(password) && this.usuarioStore.findUser(usuario)) {
         console.log(password + ' ' + usuario)
         alert("Bienvenido");
