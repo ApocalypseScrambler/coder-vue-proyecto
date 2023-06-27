@@ -1,4 +1,4 @@
-export const CarritoStore = {
+export const cartStore = {
   carrito: [],
 
   // GETTERS

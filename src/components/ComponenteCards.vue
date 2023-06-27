@@ -28,7 +28,7 @@
 
 <script>
 import ComponenteContadorProducto from "./ComponenteContadorProducto.vue";
-import { CarritoStore } from "@/stores/CarritoStore";
+import { cartStore } from "@/stores/cartStore";
 
 export default {
   name: "ComponenteCard",
@@ -43,13 +43,12 @@ export default {
     },
   },
   data: () => ({
-    CarritoStore,
-    ComponenteContadorProducto,
+    cartStore,
     opacity: 0
   }),
   computed: {
     agregado() {
-      return this.CarritoStore.findById(this.item.id);
+      return this.cartStore.findById(this.item.id);
     },
     btnColor() {
       return this.agregado ? "btn btn-secondary" : "btn btn-primary";
@@ -58,7 +57,7 @@ export default {
 
   methods: {
     agregarAlCarrito() {
-      this.CarritoStore.agregarAlCarrito(this.item);
+      this.cartStore.agregarAlCarrito(this.item);
     },
   },
 };

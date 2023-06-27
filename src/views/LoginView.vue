@@ -17,14 +17,14 @@
 </template>
   
 <script>
-import { usuarioStore } from "../stores/usuarioStore";
+import { userStore } from "../stores/userStore";
 import serviceUsuarios from "../Utils/serviceUsuarios";
 
 export default {
   name: "LoginView",
 
   data: () => ({
-    usuarioStore,
+    userStore,
     usuario: "",
     password: "",
     serviceUsuarios: new serviceUsuarios()
@@ -36,16 +36,18 @@ export default {
     methods: {
         async obtenerUsuarios() {
         let usuarios = await this.serviceUsuarios.obtenerUsuarios()
-        this.usuarioStore.usuarios = usuarios
-        console.log(this.usuarioStore.usuarios)
+        this.userStore.usuarios = usuarios
+        console.log(this.userStore.usuarios)
         },
     },
     validar(usuario, password) {
       
-      if (this.usuarioStore.findPassword(password) && this.usuarioStore.findUser(usuario)) {
+      if (this.userStore.findPassword(password) && this.userStore.findUser(usuario)) {
         console.log(password + ' ' + usuario)
         alert("Bienvenido");
-        this.usuarioStore.usuarioLogueado = usuario
+        this.userStore.usuarioLogueado = usuario
+        console.log(this.userStore.usuarioLogueado)
+        this.$router.push('/')
       }
       else {
         alert("No bienvenido");

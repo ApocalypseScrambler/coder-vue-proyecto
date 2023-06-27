@@ -7,7 +7,7 @@
 </template>
   
 <script>
-import { CarritoStore } from "@/stores/CarritoStore";
+import { cartStore } from "@/stores/cartStore";
 
 export default {
   name: "ComponenteContadorProducto",
@@ -16,24 +16,24 @@ export default {
     productoId: Number,
   },
   data: () => ({
-    CarritoStore,
+    cartStore,
     contador: 1,
   }),
 
   methods: {
     restar() {
-      this.CarritoStore.restoCantidad(this.productoId);
+      this.cartStore.restoCantidad(this.productoId);
     },
     sumar() {
-      this.CarritoStore.aumentoCantidad(this.productoId);
+      this.cartStore.aumentoCantidad(this.productoId);
     },
   },
   computed: {
     noEnCarrito() {
-      return !this.CarritoStore.findById(this.productoId);
+      return !this.cartStore.findById(this.productoId);
     },
     cantidad() {
-      return this.CarritoStore.productoCantidad(this.productoId)
+      return this.cartStore.productoCantidad(this.productoId)
     },
   },
 };

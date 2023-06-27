@@ -15,7 +15,7 @@
           Productos</router-link></li>
         <li class="btn btn-light boton"><router-link :to="{ name: 'login-view' }">
           <i class="icono"><PersonaIcono /></i>
-          {{ usuarioLogueado }} </router-link></li>
+          {{ userStore.usuarioLogueado }} </router-link></li>
         <li class="btn btn-light boton">
           <router-link :to="{ name: 'carrito-view' }">
             <i><CarritoIcono /></i>
@@ -30,8 +30,8 @@
 
 <script>
 import router from '../router'
-import { CarritoStore } from "../stores/carritoStore";
-import { usuarioStore } from '../stores/usuarioStore';
+import { cartStore } from "../stores/cartStore";
+import { userStore } from '../stores/userStore';
 import CarritoIcono from '../components/icons/CarritoIcono.vue';
 import HamburguesaIcono from '../components/icons/HamburguesaIcono.vue';
 import PersonaIcono from '../components/icons/PersonaIcono.vue';
@@ -39,16 +39,16 @@ import PersonaIcono from '../components/icons/PersonaIcono.vue';
 export default {
   components: { CarritoIcono, HamburguesaIcono, PersonaIcono },
   data: () => ({
-    CarritoStore,
-    usuarioStore
+    cartStore,
+    userStore
   }),
   router: router,
   computed: {
     carritoCantidad() {
-      return this.CarritoStore.carritoCantidad()
+      return this.cartStore.carritoCantidad()
     },
     usuarioLogueado() {
-      return this.usuarioStore.usuarioLogueado
+      return this.cartStore.usuarioLogueado
     }
   },
 }

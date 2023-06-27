@@ -41,25 +41,25 @@
 </template>
   
 <script>
-import { CarritoStore } from "@/stores/CarritoStore";
+import { cartStore } from "@/stores/cartStore";
 
 export default {
     name: "ComponenteModalCarrito",
     data: () => ({
-        CarritoStore
+        cartStore
     }),
 
     computed: {
         productosEnCarrito() {
-            return this.CarritoStore.carrito;
+            return this.cartStore.carrito;
         },
         total() {
-            return this.CarritoStore.carritoTotalPrecio();
+            return this.cartStore.carritoTotalPrecio();
         },
     },
     methods: {
         remove(id) {
-            this.CarritoStore.removerDelCarrito(id);
+            this.cartStore.removerDelCarrito(id);
         },
     },
 };

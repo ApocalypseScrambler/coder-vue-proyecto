@@ -1,5 +1,5 @@
 
-export const usuarioStore = {
+export const userStore = {
   usuarios: [],
   usuarioLogueado: "Login",
 
