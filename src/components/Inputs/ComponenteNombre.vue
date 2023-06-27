@@ -8,7 +8,7 @@
     <input type="text" v-model="nombre" placeholder="Nombre(s)" />
     <span>*</span>
 
-    <componente-tooltip v-show="error" :error="error" />
+    <p v-show="error"> {{ error }}</p>
 
   </div>
 </template>
@@ -16,15 +16,13 @@
 <script>
 import usuarioIcono from '../icons/UsuarioIcono.vue'
 import formularioStore from '@/stores/formularioStore'
-import ComponenteTooltip from '../ComponenteTooltip.vue'
 
 export default {
 
   name: 'ComponenteNombre',
 
   components: {
-    usuarioIcono,
-    ComponenteTooltip
+    usuarioIcono
   },
 
   data: () => ({

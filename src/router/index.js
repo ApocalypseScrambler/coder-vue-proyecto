@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 
 import ProductosView from "../views/ProductosView.vue"
 import LoginView from "../views/LoginView.vue"
+import RegistroView from "../views/RegistroView.vue"
 import CarritoView from "../views/CarritoView.vue"
 
 const router = new VueRouter({
@@ -20,6 +21,11 @@ const router = new VueRouter({
       path: "/Login",
       name: "login-view",
       component: LoginView
+    },
+    {
+      path: "/Registro",
+      name: "registro-view",
+      component: RegistroView
     },
     {
       path: "/Carrito", 

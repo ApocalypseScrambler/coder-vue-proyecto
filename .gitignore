@@ -27,4 +27,4 @@ dist-ssr
 *.sw?
 
 #Variables de Entorno para las urls
-*.env
+#*.env

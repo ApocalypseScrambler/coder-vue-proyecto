@@ -11,7 +11,7 @@
 
         <visible-icono class="visible" :visible="visible" @click.native="visible = !visible" />
 
-        <componente-tooltip v-show="error" :error="error" />
+        <p v-show="error"> {{ error }}</p>
         
     </div>
 </template>
@@ -19,7 +19,6 @@
 <script>
 import PassIcono from '../icons/PassIcono.vue'
 import VisibleIcono from '../icons/VisibleIcono.vue'
-import ComponenteTooltip from '../ComponenteTooltip.vue'
 
 import formularioStore from '@/stores/formularioStore'
 
@@ -28,9 +27,7 @@ export default {
 
     components: {
         PassIcono,
-        VisibleIcono,
-        ComponenteTooltip,
-        PassIcono
+        VisibleIcono
     },
 
     data: () => ({

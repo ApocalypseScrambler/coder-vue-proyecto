@@ -8,7 +8,7 @@
         <input type="phone" v-model="telefono" placeholder="Teléfono" />
         <span>*</span>
 
-        <componente-tooltip v-show="error" :error="error" />
+        <p v-show="error"> {{ error }}</p>
 
     </div>
 </template>
@@ -16,15 +16,13 @@
 <script>
 import celularIcono from '../icons/CelularIcono.vue'
 import formularioStore from '@/stores/formularioStore'
-import ComponenteTooltip from '../ComponenteTooltip.vue'
 
 export default {
 
     name: 'ComponenteTelefono',
 
     components: {
-        celularIcono,
-        ComponenteTooltip
+        celularIcono
     },
 
     data: () => ({

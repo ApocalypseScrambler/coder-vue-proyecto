@@ -7,7 +7,7 @@
         <input id="password" v-model="password" placeholder="Contraseña" type="password">
         <p>
           ¿Aún no estás registrado?
-          <button class="btn btn-primary"><router-link :to="{ name: 'registrarse-view' }">Registrarse</router-link></button>
+          <button class="btn btn-primary"><router-link :to="{ name: 'registro-view' }">Registrarse</router-link></button>
         </p>
 
         <button class="btn btn-primary" type="submit" @click="validar(user, password)">Ingresar</button>
@@ -43,6 +43,7 @@ export default {
     validar(usuario, password) {
 
       if (this.usuarioStore.findPassword(password) && this.usuarioStore.findUser(usuario)) {
+        console.log(password + ' ' + usuario)
         alert("Bienvenido");
         this.usuarioStore.usuarioLogueado = usuario
       }
@@ -60,6 +61,10 @@ export default {
     background: white;
     padding: 1rem;
     border-radius: 8px;
+    width: 30%;
+}
+h1 {
+  text-align: center;
 }
 .login {
     display: flex;

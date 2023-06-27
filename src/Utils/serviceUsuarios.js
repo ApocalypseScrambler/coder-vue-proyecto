@@ -7,12 +7,8 @@ console.log(url)
 
 export default class ServiceUsuarios {
 
-  constructor(usuario, password, nombre, mail, telefono) {
-    this.usuario = usuario
-    this.password = password
-    this.nombre = nombre
-    this.mail = mail
-    this.telefono = telefono
+  constructor( formulario) {
+    this.formulario = formulario
     this.url = url
   }
 
@@ -27,9 +23,9 @@ export default class ServiceUsuarios {
   }
 
   /* POST */
-  async guardarUsuario(usuario) {
+  async guardarUsuario(formulario) {
     try {
-      return (await axios.post(url, usuario)).data
+      return (await axios.post(url, formulario)).data
     }
     catch(error) {
         console.error('Error en guardarUsuario: ' + error.message)
