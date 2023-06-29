@@ -1,5 +1,10 @@
 export const cartStore = {
   carrito: [],
+  pedido: {
+    fecha: new Date().toLocaleDateString(),
+    totalPedido: 0,
+    carritoPedido: []
+  },
 
   // GETTERS
   findById(id) {

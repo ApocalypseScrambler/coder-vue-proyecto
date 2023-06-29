@@ -39,10 +39,10 @@ export default {
     },
     nombre: {
       get() {
-        return this.formularioStore.formulario.nombrecompleto
+        return this.formularioStore.formulario.nombreCompleto
       },
       set(nuevoValor) {
-        this.formularioStore.nuevoValor('nombrecompleto', nuevoValor)
+        this.formularioStore.nuevoValor('nombreCompleto', nuevoValor)
       }
     }
   }

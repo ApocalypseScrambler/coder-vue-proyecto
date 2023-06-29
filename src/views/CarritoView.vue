@@ -35,7 +35,7 @@
                     </tfoot>
                 </table>
                 <p v-else>Aún no has agregado productos en el carrito.</p>
-                <button v-show="productosEnCarrito.length>0" class="btn btn-primary">Confirmar Pedido</button>
+                <button v-show="productosEnCarrito.length>0" class="btn btn-primary" @click="cargarPedido()">Confirmar Pedido</button>
             </div>
         </div>
     </div>
@@ -43,9 +43,10 @@
   
 <script>
 import { cartStore } from "@/stores/cartStore";
+import ax from 'dedalo-ax'
 
 export default {
-    name: "ComponenteModalCarrito",
+    name: "CarritoView",
     data: () => ({
         cartStore
     }),
@@ -62,6 +63,16 @@ export default {
         remove(id) {
             this.cartStore.removerDelCarrito(id);
         },
+        async cargarPedido() {
+            this.cartStore.pedido.carritoPedido.push({ ...this.cartStore.carrito });
+            this.cartStore.pedido.totalPedido = this.total();
+            const mockApiUrl = import.meta.env.VITE_API_PEDIDOS
+            const endpoint = "/pedidos";
+            const url = mockApiUrl + endpoint;
+            const res = await ax.post(url, this.cartStore.pedido.carritoPedido)
+            console.log(res)
+            this.cartStore.carrito = []
+        }
     },
 };
 </script>

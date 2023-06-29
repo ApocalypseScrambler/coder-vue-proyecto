@@ -27,7 +27,7 @@ import ComponenteMail from '../components/Inputs/ComponenteMail.vue';
 import ComponenteTelefono from '../components/Inputs/ComponenteTelefono.vue';
 import formularioStore from '@/stores/formularioStore'
 import serviceUsuarios from '../utilService/serviceUsuarios';
-import axios from 'axios';
+import ax from 'dedalo-ax'
 
 export default {
     name: 'RegistroView',
@@ -41,27 +41,26 @@ export default {
     data: () => ({
     formularioStore,
     serviceUsuarios: new serviceUsuarios(),
-    user: [],
     errorMessage: ""
   }),
   methods: {
     async signupUser() {
         this.formularioStore.submitFormulario()
         const mockApiUrl = import.meta.env.VITE_API_URL;
-        let endpoint = "/usuarios?usuario=" + this.formularioStore.usuario;
-        let url = mockApiUrl + endpoint;
-        const response = await axios.get(url);
-        this.user = response.data; 
-        if (this.user[0]) {
+        const query = "/usuarios?usuario=" + this.formularioStore.formulario.usuario;
+        const urlQuery = mockApiUrl + query;
+        const user = await ax.get(urlQuery);
+        if (user[0]) {
             this.errorMessage = 'Ya existe un usuario con ese nombre.'
         } else {
-        endpoint = "/usuarios";
-        url = mockApiUrl + endpoint;
-        console.log(this.formularioStore.usuarios)
-        const res = await axios.post(url, this.formularioStore.usuarios)
+        const endpoint = "/usuarios";
+        const url = mockApiUrl + endpoint;
+        const res = await ax.post(url, this.formularioStore.formulario)
         console.log(res)
-        this.formularioStore.resetFormulario()}
-        this.formularioStore.usuarios = []
+        this.formularioStore.resetFormulario()
+        alert('Registro de usuario completado')
+        this.$router.push('/')
+        }
         }
     }
 }

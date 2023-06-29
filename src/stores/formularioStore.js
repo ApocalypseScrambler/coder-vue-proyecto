@@ -4,7 +4,7 @@ export default {
   formulario: {
     usuario: "",
     password: "",
-    nombrecompleto: "",
+    nombreCompleto: "",
     mail: "",
     telefono: "",
     admin: false
@@ -12,8 +12,6 @@ export default {
 
   submitted: false,
 
-  usuarios: [],
- 
   erroresUsuario() {
     return new ValidacionUsuario(this.formulario.usuario, this.submitted)
   },
@@ -21,7 +19,7 @@ export default {
     return new ValidacionPassword(this.formulario.password, this.submitted)
   },
   erroresNombre() {
-    return new validacionClase(this.formulario.nombrecompleto, this.submitted)
+    return new validacionClase(this.formulario.nombreCompleto, this.submitted)
   },
   erroresTelefono() {
     return new ValidacionTelefono(this.formulario.telefono, this.submitted)
@@ -45,10 +43,9 @@ export default {
   submitFormulario() {
     this.submitted = true
     if (this.controloCampos()) {
-      this.usuarios.push({ ...this.formulario })
-      this.resetFormulario()
+      //todo ok
     } else {
-      window.scroll(0, 0)
+      alert('Existen errores, por favor controle')
     }
   },
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import ax from 'dedalo-ax'
 const mockApiUrl = import.meta.env.VITE_API_URL;
 const endpoint = "/productos";
 
@@ -15,7 +15,7 @@ export default class ServiceProductos {
   /* GET */
   async obtenerProductos() {
     try {
-      return (await axios.get(url)).data
+      return (await ax.get(url))
     }
     catch(error) {
         console.error('Error en obtenerProductos: ' + error.message)
@@ -25,7 +25,7 @@ export default class ServiceProductos {
   /* POST */
   async guardarProducto(producto) {
     try {
-      return (await axios.post(url, producto)).data
+      return (await ax.post(url, producto))
     }
     catch(error) {
         console.error('Error en guardarProducto: ' + error.message)
@@ -35,7 +35,7 @@ export default class ServiceProductos {
   /* PUT */
   async actualizarComida(comida, id) {
     try {
-      return (await axios.put(this.url + id, comida, this.utilService.getHttpOptions())).data
+      return (await ax.put(this.url + id, comida, this.utilService.getHttpOptions())).data
     }
     catch(error) {
         console.error('Error en actualizarComida: ' + error.message)
@@ -45,7 +45,7 @@ export default class ServiceProductos {
   /* DELETE */
   async borrarComida(id) {
     try {
-      return (await axios.delete(this.url + id)).data
+      return (await ax.delete(this.url + id)).data
     }
     catch(error) {
         console.error('Error en borrarComida: ' + error.message)

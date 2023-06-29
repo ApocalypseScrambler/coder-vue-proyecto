@@ -34,7 +34,7 @@
 <script>
 import { userStore } from "../stores/userStore";
 import serviceUsuarios from "../utilService/serviceUsuarios";
-import axios from "axios";
+import ax from 'dedalo-ax'
 
 export default {
   name: "LoginView",
@@ -44,8 +44,7 @@ export default {
     serviceUsuarios: new serviceUsuarios(),
     usuario: "",
     password: "",
-    errorMessage: "",
-    user: []
+    errorMessage: ""
   }),
   methods: {
     async LogIn() {
@@ -54,18 +53,16 @@ export default {
       const url = mockApiUrl + endpoint;
 
       try {
-        const response = await axios.get(url);
-        this.user = response.data; 
+        const user = await ax.get(url);
         
-        if (!this.user[0]) {
+        if (!user[0]) {
           this.errorMessage = 'Usuario no registrado.';
-        } else if (this.user[0].password != this.password) {
+        } else if (user[0].password != this.password) {
           this.errorMessage = 'Contraseña incorrecta.';
         } else {
-          this.userStore.usuario = this.user[0];
+          this.userStore.usuario = user[0];
           this.userStore.usuarioLogueado = this.usuario;
-          this.userStore.usuarioIsAdmin = this.user[0].admin;
-          console.log(this.userStore.usuarioIsAdmin)
+          this.userStore.usuarioIsAdmin = user[0].admin;
         }
       } catch (error) {
         console.error(error);
