@@ -25,7 +25,7 @@ import ComponenteNombre from '../components/Inputs/ComponenteNombre.vue'
 import ComponenteMail from '../components/Inputs/ComponenteMail.vue';
 import ComponenteTelefono from '../components/Inputs/ComponenteTelefono.vue';
 import formularioStore from '@/stores/formularioStore'
-import serviceUsuarios from '../Utils/serviceUsuarios';
+import serviceUsuarios from '../utilService/serviceUsuarios';
 
 export default {
     name: 'RegistroView',

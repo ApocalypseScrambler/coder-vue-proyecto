@@ -8,7 +8,7 @@
 <script>
 
 import ComponenteCards from "../components/ComponenteCards.vue";
-import serviceProductos from "../Utils/serviceProductos";
+import serviceProductos from "../utilService/serviceProductos";
 
 export default {
     name: "ProductosView",

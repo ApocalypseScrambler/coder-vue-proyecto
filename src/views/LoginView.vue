@@ -5,15 +5,17 @@
       <form v-if="userStore.usuarioLogueado === 'Login'" class="row g-3 needs-validation" novalidate>
         <input v-model="usuario" placeholder="Usuario">
         <input v-model="password" placeholder="Contraseña" type="password">
+        <p v-if="errorMessage"> {{ errorMessage }}</p>
         <p>
           ¿Aún no estás registrado?
-          <button class="btn btn-primary"><router-link :to="{ name: 'registro-view' }" style="color: white;">Registrarse</router-link></button>
+          <button class="btn btn-primary"><router-link :to="{ name: 'registro-view' }"
+              style="color: white;">Registrarse</router-link></button>
         </p>
 
-        <button class="btn btn-primary" type="submit" @click="validar()">Ingresar</button>
+        <button class="btn btn-primary" type="submit" @click="LogIn()">Ingresar</button>
       </form>
       <form v-else>
-        <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin = true">          
+        <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin = true">
           <button class="btn btn-primary">Alta Producto</button>
           <button class="btn btn-primary">Modificar Producto</button>
           <button class="btn btn-primary">Eliminar Producto</button>
@@ -22,7 +24,7 @@
         <p>¿ Desea Salir ?</p>
         <div class="botones">
           <button class="btn btn-primary" @click="LogOut()">Si</button>
-          <button class="btn btn-primary" ><router-link to="/" style="color: white;">No</router-link></button>
+          <button class="btn btn-primary"><router-link to="/" style="color: white;">No</router-link></button>
         </div>
       </form>
     </div>
@@ -31,7 +33,8 @@
   
 <script>
 import { userStore } from "../stores/userStore";
-import serviceUsuarios from "../Utils/serviceUsuarios";
+import serviceUsuarios from "../utilService/serviceUsuarios";
+import axios from "axios";
 
 export default {
   name: "LoginView",
@@ -40,29 +43,32 @@ export default {
     userStore,
     serviceUsuarios: new serviceUsuarios(),
     usuario: "",
-    password: ""
+    password: "",
+    errorMessage: "",
+    user: []
   }),
-
-  mounted() {
-    this.obtenerUsuarios()
-  },
   methods: {
-    async obtenerUsuarios() {
-      let usuarios = await this.serviceUsuarios.obtenerUsuarios()
-      this.userStore.usuarios = usuarios
-      console.log(this.userStore.usuarios)
-    },
+    async LogIn() {
+      const mockApiUrl = import.meta.env.VITE_API_URL;
+      const endpoint = "/usuarios?usuario=" + this.usuario;
+      const url = mockApiUrl + endpoint;
 
-    validar() {
-      if (this.userStore.findPassword(this.password) && this.userStore.findUser(this.usuario)) {
-        alert("Bienvenido");
-        this.userStore.usuarioLogueado = this.usuario
-        this.userStore.usuarioIsAdmin = this.userStore.findAdmin(this.usuario)
-        console.log(this.userStore.usuarioIsAdmin)
-        this.$router.push('/')
-      }
-      else {
-        alert("No bienvenido");
+      try {
+        const response = await axios.get(url);
+        this.user = response.data; 
+
+        if (!this.user[0]) {
+          this.errorMessage = 'Usuario no registrado.';
+        } else if (this.user.password !== this.password) {
+          this.errorMessage = 'Contraseña incorrecta.';
+        } else {
+          this.userStore.usuario = this.user;
+          this.userStore.usuarioLogueado = this.usuario;
+          this.userStore.usuarioIsAdmin = this.user.admin;
+        }
+      } catch (error) {
+        console.error(error);
+        this.errorMessage = 'Error al realizar la solicitud.';
       }
     },
     LogOut() {
@@ -80,6 +86,7 @@ export default {
 a {
   color: black;
 }
+
 .tabla {
   background: white;
   padding: 1rem;
@@ -114,5 +121,4 @@ p {
   width: 100%;
   margin-top: 12rem;
 }
-
 </style>

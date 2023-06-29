@@ -1,6 +1,6 @@
 
 export const userStore = {
-  usuarios: [],
+  usuario: [],
   usuarioLogueado: "Login",
   usuarioIsAdmin: false,
 
