@@ -45,6 +45,16 @@ export default class Validacion {
   }
 }
 
+export class ValidacionUsuario extends Validacion {
+  constructor (input, submitted) {
+    super(input, submitted)
+  }
+
+  usuarioSinErrores() {
+    return !this.campoVacio() && !this.demasiadoCorto() && !this.demasiadoLargo() 
+  }
+}
+
 const emailRegEx = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,6}$/;
 
 export class ValidacionMail extends Validacion {

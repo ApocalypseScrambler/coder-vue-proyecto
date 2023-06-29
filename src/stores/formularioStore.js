@@ -1,4 +1,4 @@
-import validacionClase, { ValidacionMail, ValidacionPassword, ValidacionTelefono } from './validacionesClase'
+import validacionClase, { ValidacionMail, ValidacionPassword, ValidacionTelefono, ValidacionUsuario } from './validacionesClase'
 
 export default {
   formulario: {
@@ -6,7 +6,8 @@ export default {
     password: "",
     nombrecompleto: "",
     mail: "",
-    telefono: ""
+    telefono: "",
+    admin: false
   },
 
   submitted: false,
@@ -14,7 +15,7 @@ export default {
   usuarios: [],
  
   erroresUsuario() {
-    return new validacionClase(this.formulario.usuario, this.submitted)
+    return new ValidacionUsuario(this.formulario.usuario, this.submitted)
   },
   erroresPassword() {
     return new ValidacionPassword(this.formulario.password, this.submitted)
@@ -32,7 +33,7 @@ export default {
    
   controloCampos() {
     return (
-      this.erroresUsuario().sinErrores() &&
+      this.erroresUsuario().usuarioSinErrores() &&
       this.erroresPassword().sinErroresPassword() &&
       this.erroresNombre().sinErrores() &&
       this.erroresTelefono().telefonoSinErrores() &&

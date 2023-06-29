@@ -2,7 +2,7 @@
   <div class="login">
     <div class="tabla">
       <h1> {{ userStore.usuarioLogueado === 'Login' ? "Login" : "Mis Datos" }} </h1>
-      <form v-if="userStore.usuarioLogueado === 'Login'" class="row g-3 needs-validation" novalidate>
+      <form v-if="userStore.usuarioLogueado === 'Login'" class="row g-3 needs-validation" novalidate @submit.prevent="LogIn()">
         <input v-model="usuario" placeholder="Usuario">
         <input v-model="password" placeholder="Contraseña" type="password">
         <p v-if="errorMessage"> {{ errorMessage }}</p>
@@ -12,10 +12,10 @@
               style="color: white;">Registrarse</router-link></button>
         </p>
 
-        <button class="btn btn-primary" type="submit" @click="LogIn()">Ingresar</button>
+        <button class="btn btn-primary" type="submit">Ingresar</button>
       </form>
-      <form v-else>
-        <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin = true">
+      <form v-else @submit.prevent="LogOut()">
+        <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin === true">
           <button class="btn btn-primary">Alta Producto</button>
           <button class="btn btn-primary">Modificar Producto</button>
           <button class="btn btn-primary">Eliminar Producto</button>
@@ -23,7 +23,7 @@
         <button class="btn btn-primary misPedidos">Mis Pedidos</button>
         <p>¿ Desea Salir ?</p>
         <div class="botones">
-          <button class="btn btn-primary" @click="LogOut()">Si</button>
+          <button type="submit" class="btn btn-primary" @click="LogOut()">Si</button>
           <button class="btn btn-primary"><router-link to="/" style="color: white;">No</router-link></button>
         </div>
       </form>
@@ -56,15 +56,16 @@ export default {
       try {
         const response = await axios.get(url);
         this.user = response.data; 
-
+        
         if (!this.user[0]) {
           this.errorMessage = 'Usuario no registrado.';
-        } else if (this.user.password !== this.password) {
+        } else if (this.user[0].password != this.password) {
           this.errorMessage = 'Contraseña incorrecta.';
         } else {
-          this.userStore.usuario = this.user;
+          this.userStore.usuario = this.user[0];
           this.userStore.usuarioLogueado = this.usuario;
-          this.userStore.usuarioIsAdmin = this.user.admin;
+          this.userStore.usuarioIsAdmin = this.user[0].admin;
+          console.log(this.userStore.usuarioIsAdmin)
         }
       } catch (error) {
         console.error(error);

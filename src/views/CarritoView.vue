@@ -35,6 +35,7 @@
                     </tfoot>
                 </table>
                 <p v-else>Aún no has agregado productos en el carrito.</p>
+                <button v-show="productosEnCarrito.length>0" class="btn btn-primary">Confirmar Pedido</button>
             </div>
         </div>
     </div>
