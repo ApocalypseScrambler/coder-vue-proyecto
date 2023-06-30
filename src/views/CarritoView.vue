@@ -35,7 +35,11 @@
                     </tfoot>
                 </table>
                 <p v-else>Aún no has agregado productos en el carrito.</p>
-                <button v-show="productosEnCarrito.length>0" class="btn btn-primary" @click="cargarPedido()">Confirmar Pedido</button>
+                <div v-show="productosEnCarrito.length > 0" class="botonesCarrito">
+                    <button class="btn btn-primary" @click="cargarPedido()">Confirmar Compra</button>
+                    <button class="btn btn-primary" @click="vaciarCarrito()">Vaciar
+                        Carrito</button>
+                </div>
             </div>
         </div>
     </div>
@@ -43,12 +47,15 @@
   
 <script>
 import { cartStore } from "@/stores/cartStore";
+import { userStore } from "../stores/userStore";
+import { formattedDate } from "../utilService/helpers"
 import ax from 'dedalo-ax'
 
 export default {
     name: "CarritoView",
     data: () => ({
-        cartStore
+        cartStore,
+        userStore
     }),
 
     computed: {
@@ -64,13 +71,24 @@ export default {
             this.cartStore.removerDelCarrito(id);
         },
         async cargarPedido() {
-            this.cartStore.pedido.carritoPedido.push({ ...this.cartStore.carrito });
-            this.cartStore.pedido.totalPedido = this.total();
+            const usuario = this.userStore.usuarioLogueado
+            const fecha = formattedDate()
+            const total = this.cartStore.carritoTotalPrecio();
+            const pedidos = {
+                usuario, fecha, total,
+                productos: [...this.cartStore.carrito]
+            }
             const mockApiUrl = import.meta.env.VITE_API_PEDIDOS
             const endpoint = "/pedidos";
             const url = mockApiUrl + endpoint;
-            const res = await ax.post(url, this.cartStore.pedido.carritoPedido)
+            const res = await ax.post(url, pedidos)
             console.log(res)
+            this.cartStore.pedido = []
+            this.cartStore.carrito = []
+            alert('Pedido realizado')
+        },
+        vaciarCarrito() {
+            this.cartStore.pedido = []
             this.cartStore.carrito = []
         }
     },
@@ -83,10 +101,13 @@ export default {
     padding: 1rem;
     border-radius: 8px;
 }
+.botonesCarrito {
+    display: flex;
+    justify-content: space-between;
+}
 .carrito {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 12rem;
-}
-</style>
+}</style>

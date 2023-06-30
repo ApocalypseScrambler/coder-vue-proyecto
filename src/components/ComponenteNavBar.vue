@@ -39,6 +39,7 @@ import HamburguesaIcono from '../components/icons/HamburguesaIcono.vue';
 import PersonaIcono from '../components/icons/PersonaIcono.vue';
 
 export default {
+  name: "ComponenteNavBar",
   components: { CarritoIcono, HamburguesaIcono, PersonaIcono },
   data: () => ({
     cartStore,

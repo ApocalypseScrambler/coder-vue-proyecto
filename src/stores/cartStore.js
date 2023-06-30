@@ -1,7 +1,7 @@
 export const cartStore = {
   carrito: [],
   pedido: {
-    fecha: new Date().toLocaleDateString(),
+    fecha: "",
     totalPedido: 0,
     carritoPedido: []
   },

@@ -2,7 +2,8 @@
   <div class="login">
     <div class="tabla">
       <h1> {{ userStore.usuarioLogueado === 'Login' ? "Login" : "Mis Datos" }} </h1>
-      <form v-if="userStore.usuarioLogueado === 'Login'" class="row g-3 needs-validation" novalidate @submit.prevent="LogIn()">
+      <form v-if="userStore.usuarioLogueado === 'Login'" class="row g-3 needs-validation" novalidate
+        @submit.prevent="LogIn()">
         <input v-model="usuario" placeholder="Usuario">
         <input v-model="password" placeholder="Contraseña" type="password">
         <p v-if="errorMessage"> {{ errorMessage }}</p>
@@ -20,7 +21,8 @@
           <button class="btn btn-primary">Modificar Producto</button>
           <button class="btn btn-primary">Eliminar Producto</button>
         </div>
-        <button class="btn btn-primary misPedidos">Mis Pedidos</button>
+        <button class="btn btn-primary misPedidos"><router-link to="/Pedidos" style="color: white;"> {{
+          userStore.usuarioIsAdmin === true ? "Mis Pedidos" : "Pedidos de Usuarios" }} </router-link></button>
         <p>¿ Desea Salir ?</p>
         <div class="botones">
           <button type="submit" class="btn btn-primary" @click="LogOut()">Si</button>
@@ -54,7 +56,7 @@ export default {
 
       try {
         const user = await ax.get(url);
-        
+
         if (!user[0]) {
           this.errorMessage = 'Usuario no registrado.';
         } else if (user[0].password != this.password) {
