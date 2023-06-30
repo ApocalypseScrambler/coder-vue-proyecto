@@ -1,6 +1,9 @@
 <template>
-    <div>
-        <componente-tabla v-for="(pedido, i) in pedidos" :key="i" :pedidos="pedido" />
+    <div class="tabla">
+        <h1> {{ userStore.usuarioIsAdmin === false ? "Mis Pedidos" : "Pedidos de Usuarios" }}</h1>
+        <div v-if="this.pedidos">
+            <componente-tabla v-for="(pedido, i) in this.pedidos" :key="i" :pedidos="pedido" />
+        </div>
     </div>
 </template>
 
@@ -11,29 +14,31 @@ import ComponenteTabla from '../components/ComponenteTabla.vue';
 
 export default {
     name: "PedidosView",
-    components: ComponenteTabla,
+    components: { ComponenteTabla },
     data: () => ({
         userStore,
         urlQuery: "",
-        pedidos: []
+        pedidos: {}
     }),
-    mounted () {
+    mounted() {
         this.Pedidos()
     },
     methods: {
         async Pedidos() {
-            const mockApiUrl = import.meta.env.VITE_API_URL;
+            const mockApiUrl = import.meta.env.VITE_API_PEDIDOS;
             const endpoint = "/pedidos";
 
-            if (this.userStore.usuarioIsAdmin === true) {
+            if (this.userStore.usuarioIsAdmin === false) {
                 this.urlQuery = "?usuario=" + this.userStore.usuarioLogueado
             } else {
                 this.urlQuery = ""
             }
             const url = mockApiUrl + endpoint + this.urlQuery;
+            console.log(this.userStore.usuarioIsAdmin)
+            console.log(url)
             try {
                 this.pedidos = await ax.get(url);
-
+                console.log(this.pedidos)
             } catch (error) {
                 console.error(error);
                 this.errorMessage = 'Error al buscar los pedidos.';
@@ -43,4 +48,13 @@ export default {
 }
 </script>
 
-
+<style scoped>
+h1 {
+    color: white;
+    text-align: center;
+    margin: 2rem;
+}
+.tabla {
+    margin-top: 12rem;
+}
+</style>

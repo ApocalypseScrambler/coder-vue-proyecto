@@ -71,6 +71,9 @@ export default {
             this.cartStore.removerDelCarrito(id);
         },
         async cargarPedido() {
+            if (this.userStore.usuarioLogueado === 'Login') {
+                alert('Debe loguearse antes de continuar')
+            } else {
             const usuario = this.userStore.usuarioLogueado
             const fecha = formattedDate()
             const total = this.cartStore.carritoTotalPrecio();
@@ -86,6 +89,7 @@ export default {
             this.cartStore.pedido = []
             this.cartStore.carrito = []
             alert('Pedido realizado')
+            }
         },
         vaciarCarrito() {
             this.cartStore.pedido = []

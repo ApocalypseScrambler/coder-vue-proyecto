@@ -22,7 +22,7 @@
           <button class="btn btn-primary">Eliminar Producto</button>
         </div>
         <button class="btn btn-primary misPedidos"><router-link to="/Pedidos" style="color: white;"> {{
-          userStore.usuarioIsAdmin === true ? "Mis Pedidos" : "Pedidos de Usuarios" }} </router-link></button>
+          userStore.usuarioIsAdmin === false ? "Mis Pedidos" : "Pedidos de Usuarios" }} </router-link></button>
         <p>¿ Desea Salir ?</p>
         <div class="botones">
           <button type="submit" class="btn btn-primary" @click="LogOut()">Si</button>
@@ -65,6 +65,7 @@ export default {
           this.userStore.usuario = user[0];
           this.userStore.usuarioLogueado = this.usuario;
           this.userStore.usuarioIsAdmin = user[0].admin;
+          this.$router.push('/')
         }
       } catch (error) {
         console.error(error);
