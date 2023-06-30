@@ -114,4 +114,5 @@ export default {
     justify-content: center;
     width: 100%;
     margin-top: 12rem;
-}</style>
+}
+</style>

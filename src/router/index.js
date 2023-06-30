@@ -8,6 +8,7 @@ import LoginView from "../views/LoginView.vue"
 import RegistroView from "../views/RegistroView.vue"
 import CarritoView from "../views/CarritoView.vue"
 import PedidosView from "../views/PedidosView.vue"
+import BajaProductoView from "../views/BajaProductoView.vue"
 
 const router = new VueRouter({
   mode: 'history',
@@ -37,6 +38,11 @@ const router = new VueRouter({
       path: "/Pedidos",
       name: "pedidos-view",
       component: PedidosView
+    },
+    {
+      path: "/EliminarProducto", 
+      name: "baja-producto-view",
+      component: BajaProductoView
     }
   ]
 })

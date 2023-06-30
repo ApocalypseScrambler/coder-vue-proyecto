@@ -35,7 +35,7 @@ export default {
   components: { ComponenteContadorProducto },
   props: {
     item: {
-      id: Number,
+      id: String,
       nombre: String,
       descripcion: String,
       precio: Number,

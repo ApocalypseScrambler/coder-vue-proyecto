@@ -19,7 +19,7 @@
         <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin === true">
           <button class="btn btn-primary">Alta Producto</button>
           <button class="btn btn-primary">Modificar Producto</button>
-          <button class="btn btn-primary">Eliminar Producto</button>
+          <button class="btn btn-primary"><router-link to="/EliminarProducto" style="color: white;">Eliminar Producto</router-link></button>
         </div>
         <button class="btn btn-primary misPedidos"><router-link to="/Pedidos" style="color: white;"> {{
           userStore.usuarioIsAdmin === false ? "Mis Pedidos" : "Pedidos de Usuarios" }} </router-link></button>

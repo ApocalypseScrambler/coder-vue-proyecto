@@ -43,9 +43,9 @@ export default class ServiceProductos {
 }
 
   /* DELETE */
-  async borrarComida(id) {
+  async eliminarProducto(id) {
     try {
-      return (await ax.delete(this.url + id)).data
+      return (await ax.delete(this.url + '/' + id))
     }
     catch(error) {
         console.error('Error en borrarComida: ' + error.message)
