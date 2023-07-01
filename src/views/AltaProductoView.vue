@@ -36,7 +36,7 @@
     
 <script>
 
-import ax from 'dedalo-ax'
+import serviceProductos from "../utilService/serviceProductos";
 
 export default {
     name: "AltaProductoView",
@@ -46,7 +46,8 @@ export default {
             descripcion: '',
             precio: 0,
             imagen: ''
-        }
+        },
+        serviceProductos: new serviceProductos()
     }),
     mounted() {
         window.scroll(0, 0)
@@ -54,12 +55,8 @@ export default {
 
     methods: {
         async agregarProducto() {
-            const mockApiUrl = import.meta.env.VITE_API_URL;
-            const endpoint = "/productos";
-            const url = mockApiUrl + endpoint;
-
             try {
-                const res = await ax.post(url, this.producto)
+                const res = await this.serviceProductos.guardarProducto(this.producto)
                 console.log(res)
                 alert('Nuevo Producto Grabado')
                 Object.keys(this.producto).forEach((key) => (this.producto[key] = ""));

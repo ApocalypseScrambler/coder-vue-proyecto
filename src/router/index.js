@@ -11,6 +11,7 @@ import PedidosView from "../views/PedidosView.vue"
 import BajaProductoView from "../views/BajaProductoView.vue"
 import AltaProductoView from "../views/AltaProductoView.vue"
 import ModificarProductoView from "../views/ModificoProductoView.vue"
+import Page404 from "../views/PageError404.vue"
 
 const router = new VueRouter({
   mode: 'history',
@@ -55,6 +56,11 @@ const router = new VueRouter({
       path: "/ModificarProducto", 
       name: "modificar-producto-view",
       component: ModificarProductoView
+    },
+    {
+      path: "/:pathMatch(.*)*", 
+      name: "page-error404",
+      component: Page404
     }
   ]
 })

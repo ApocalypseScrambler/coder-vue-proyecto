@@ -45,7 +45,7 @@
     
 <script>
 
-import ax from 'dedalo-ax'
+import serviceProductos from "../utilService/serviceProductos";
 
 export default {
     name: "ModificoProductoView",
@@ -57,6 +57,7 @@ export default {
             precio: 0,
             imagen: ''
         },
+        serviceProductos: new serviceProductos(),
         errorMessage: ""
     }),
 
@@ -65,35 +66,18 @@ export default {
     },
     methods: {
         async buscarProducto() {
-            const mockApiUrl = import.meta.env.VITE_API_URL;
-            const endpoint = "/productos/";
-            const url = mockApiUrl + endpoint + this.producto.id;
-
-            try {
-                this.producto = await ax.get(url)
-                console.log(this.producto)
-            }
-            catch (error) {
-                console.error(error);
-                this.errorMessage = 'Id de Producto no encontrada.';
-            }
+            this.producto = await this.serviceProductos.obtenerProducto(this.producto.id)
+            console.log(this.producto)
+            this.errorMessage = this.serviceProductos.errorMessage
+            console.log(this.errorMessage)
         },
         async guardarProducto() {
-            const mockApiUrl = import.meta.env.VITE_API_URL;
-            const endpoint = "/productos/";
-            const url = mockApiUrl + endpoint + this.producto.id;
-
-            try {
-                const res = await ax.put(url, this.producto)
-                console.log(res)
-                alert('Producto Actualizado')
-                Object.keys(this.producto).forEach((key) => (this.producto[key] = ""));
-                window.scroll(0, 0)
-            }
-            catch (error) {
-                console.error(error);
-                this.errorMessage = 'Error al realizar la solicitud.';
-            }
+            const res = await this.serviceProductos.guardarProducto(this.producto)
+            console.log(res)
+            alert('Producto Actualizado')
+            Object.keys(this.producto).forEach((key) => (this.producto[key] = ""));
+            window.scroll(0, 0)
+            this.errorMessage = this.serviceProductos.errorMessage
         }
     }
 }
