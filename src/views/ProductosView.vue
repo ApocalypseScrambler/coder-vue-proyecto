@@ -14,6 +14,7 @@ export default {
     name: "ProductosView",
     components: { ComponenteCards },
     mounted () {
+        window.scroll(0, 0),
         this.obtenerProductos()
     },
     data: () => ({

@@ -13,7 +13,7 @@ export default {
   name: "ComponenteContadorProducto",
 
   props: {
-    productoId: Number,
+    productoId: String,
   },
   data: () => ({
     cartStore,

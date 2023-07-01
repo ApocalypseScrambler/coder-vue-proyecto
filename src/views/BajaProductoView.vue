@@ -5,24 +5,24 @@
             <div class="d-block text-center">
                 <table class="table table-striped table-dark" v-if="this.items.length">
                     <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Id Producto</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col"></th>
+                        <tr class="d-flex">
+                            <th scope="col" class="col-1">Id Producto</th>
+                            <th scope="col" class="col-2">Nombre</th>
+                            <th scope="col" class="col-3">Descripción</th>
+                            <th scope="col" class="col-1">Precio</th>
+                            <th scope="col" class="col-3">Imagen</th>
+                            <th scope="col" class="col-2"></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr v-for="item in this.items" :key="item.id">
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.nombre }}</td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.precio }}</td>
-                            <td>{{ item.imagen }}</td>
-                            <td @click="eliminarProducto(item.id)">🗑️</td>
+                        <tr class="d-flex" v-for="item in this.items" :key="item.id">
+                            <td class="col-1">{{ item.id }}</td>
+                            <td class="col-2">{{ item.nombre }}</td>
+                            <td class="col-3">{{ item.descripcion }}</td>
+                            <td class="col-1">{{ item.precio }}</td>
+                            <td class="col-3"><img class="imagen" :src=item.imagen :alt=item.nombre></td>
+                            <td class="col-2"><button class="btn btn-danger" @click="eliminarProducto(item.id)">Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -36,12 +36,14 @@ import serviceProductos from "../utilService/serviceProductos";
 export default {
     name: "BajaProductoView",
     mounted() {
+        window.scroll(0, 0)
         this.obtenerProductos()
     },
     data: () => ({
         items: [],
         serviceProductos: new serviceProductos()
     }),
+    
     methods: {
         async obtenerProductos() {
             let productos = await this.serviceProductos.obtenerProductos()
@@ -67,10 +69,12 @@ export default {
     margin: 2rem;
     border-radius: 1rem;
 }
-.contenedor {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 5rem;
+.contenedor {    
+    margin-top: 7rem;
+}
+
+.imagen {
+    width: 7rem;
+    height: 7rem;
 }
 </style>

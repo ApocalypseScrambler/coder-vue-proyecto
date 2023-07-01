@@ -57,7 +57,9 @@ export default {
         cartStore,
         userStore
     }),
-
+    mounted() {
+        window.scroll(0, 0)
+    },
     computed: {
         productosEnCarrito() {
             return this.cartStore.carrito;
@@ -74,21 +76,21 @@ export default {
             if (this.userStore.usuarioLogueado === 'Login') {
                 alert('Debe loguearse antes de continuar')
             } else {
-            const usuario = this.userStore.usuarioLogueado
-            const fecha = formattedDate()
-            const total = this.cartStore.carritoTotalPrecio();
-            const pedidos = {
-                usuario, fecha, total,
-                productos: [...this.cartStore.carrito]
-            }
-            const mockApiUrl = import.meta.env.VITE_API_PEDIDOS
-            const endpoint = "/pedidos";
-            const url = mockApiUrl + endpoint;
-            const res = await ax.post(url, pedidos)
-            console.log(res)
-            this.cartStore.pedido = []
-            this.cartStore.carrito = []
-            alert('Pedido realizado')
+                const usuario = this.userStore.usuarioLogueado
+                const fecha = formattedDate()
+                const total = this.cartStore.carritoTotalPrecio();
+                const pedidos = {
+                    usuario, fecha, total,
+                    productos: [...this.cartStore.carrito]
+                }
+                const mockApiUrl = import.meta.env.VITE_API_PEDIDOS
+                const endpoint = "/pedidos";
+                const url = mockApiUrl + endpoint;
+                const res = await ax.post(url, pedidos)
+                console.log(res)
+                this.cartStore.pedido = []
+                this.cartStore.carrito = []
+                alert('Pedido realizado')
             }
         },
         vaciarCarrito() {
@@ -105,10 +107,12 @@ export default {
     padding: 1rem;
     border-radius: 8px;
 }
+
 .botonesCarrito {
     display: flex;
     justify-content: space-between;
 }
+
 .carrito {
     display: flex;
     justify-content: center;

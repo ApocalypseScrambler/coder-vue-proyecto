@@ -17,9 +17,12 @@
       </form>
       <form v-else @submit.prevent="LogOut()">
         <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin === true">
-          <button class="btn btn-primary">Alta Producto</button>
-          <button class="btn btn-primary">Modificar Producto</button>
-          <button class="btn btn-primary"><router-link to="/EliminarProducto" style="color: white;">Eliminar Producto</router-link></button>
+          <button class="btn btn-primary"><router-link to="/AltaProducto" style="color: white;">Alta
+              Producto</router-link></button>
+          <button class="btn btn-primary"><router-link to="/ModificarProducto" style="color: white;">Modificar
+              Producto</router-link></button>
+          <button class="btn btn-primary"><router-link to="/EliminarProducto" style="color: white;">Eliminar
+              Producto</router-link></button>
         </div>
         <button class="btn btn-primary misPedidos"><router-link to="/Pedidos" style="color: white;"> {{
           userStore.usuarioIsAdmin === false ? "Mis Pedidos" : "Pedidos de Usuarios" }} </router-link></button>
@@ -48,6 +51,9 @@ export default {
     password: "",
     errorMessage: ""
   }),
+  mounted() {
+    window.scroll(0, 0)
+  },
   methods: {
     async LogIn() {
       const mockApiUrl = import.meta.env.VITE_API_URL;

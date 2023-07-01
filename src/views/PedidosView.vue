@@ -21,6 +21,7 @@ export default {
         pedidos: {}
     }),
     mounted() {
+        window.scroll(0, 0),
         this.Pedidos()
     },
     methods: {
