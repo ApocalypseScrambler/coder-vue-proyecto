@@ -1,6 +1,6 @@
 <template>
     <div class="altaProducto">
-        <div class="formulario">
+        <div class="formulario" v-if="userStore.usuarioIsAdmin === true">
             <h2>Alta de Nuevo Producto</h2>
             <label for="nombre">
                 Nombre Producto:
@@ -31,12 +31,17 @@
                 <button class="btn btn-primary" @click="agregarProducto()">Agregar</button>
             </div>
         </div>
+        <div v-else class="formulario">
+            <p class="text-center"><strong>Debe Loguearse para acceder a esta pantalla</strong></p>
+        </div>
     </div>
 </template>
     
 <script>
 
+import { userStore } from '../stores/userStore';
 import serviceProductos from "../utilService/serviceProductos";
+
 
 export default {
     name: "AltaProductoView",
@@ -47,7 +52,8 @@ export default {
             precio: 0,
             imagen: ''
         },
-        serviceProductos: new serviceProductos()
+        serviceProductos: new serviceProductos(),
+        userStore
     }),
     mounted() {
         window.scroll(0, 0)

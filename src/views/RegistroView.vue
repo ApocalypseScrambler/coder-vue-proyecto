@@ -39,28 +39,28 @@ export default {
         ComponenteMail
     },
     data: () => ({
-    formularioStore,
-    serviceUsuarios: new serviceUsuarios(),
-    errorMessage: ""
-  }),
-  methods: {
-    async signupUser() {
-        this.formularioStore.submitFormulario()
-        const mockApiUrl = import.meta.env.VITE_API_URL;
-        const query = "/usuarios?usuario=" + this.formularioStore.formulario.usuario;
-        const urlQuery = mockApiUrl + query;
-        const user = await ax.get(urlQuery);
-        if (user[0]) {
-            this.errorMessage = 'Ya existe un usuario con ese nombre.'
-        } else {
-        const endpoint = "/usuarios";
-        const url = mockApiUrl + endpoint;
-        const res = await ax.post(url, this.formularioStore.formulario)
-        console.log(res)
-        this.formularioStore.resetFormulario()
-        alert('Registro de usuario completado')
-        this.$router.push('/')
-        }
+        formularioStore,
+        serviceUsuarios: new serviceUsuarios(),
+        errorMessage: ""
+    }),
+    methods: {
+        async signupUser() {
+            this.formularioStore.submitFormulario()
+            const mockApiUrl = import.meta.env.VITE_API_URL;
+            const query = "/usuarios?usuario=" + this.formularioStore.formulario.usuario;
+            const urlQuery = mockApiUrl + query;
+            const user = await ax.get(urlQuery);
+            if (user[0]) {
+                this.errorMessage = 'Ya existe un usuario con ese nombre.'
+            } else {
+                const endpoint = "/usuarios";
+                const url = mockApiUrl + endpoint;
+                const res = await ax.post(url, this.formularioStore.formulario)
+                console.log(res)
+                this.formularioStore.resetFormulario()
+                alert('Registro de usuario completado')
+                this.$router.push('/')
+            }
         }
     }
 }
@@ -74,9 +74,12 @@ form {
     border-radius: 8px;
     width: 50%;
 }
-p, h1 {
+
+p,
+h1 {
     text-align: center;
 }
+
 .registro {
     display: flex;
     justify-content: center;
@@ -85,6 +88,5 @@ p, h1 {
 }
 
 a {
-  color: white;
-}
-</style>
+    color: white;
+}</style>

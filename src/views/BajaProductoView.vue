@@ -1,6 +1,6 @@
 <template>
     <div class="contenedor">
-        <div class="tabla">
+        <div class="tabla" v-if="userStore.usuarioIsAdmin === true">
             <h1>Productos</h1>
             <div class="d-block text-center">
                 <table class="table table-striped table-dark" v-if="this.items.length">
@@ -28,10 +28,14 @@
                 </table>
             </div>
         </div>
+        <div v-else class="advertencia">
+            <p class="text-center"><strong>Debe Loguearse para acceder a esta pantalla</strong></p>
+        </div>
     </div>
 </template>
 <script>
 import serviceProductos from "../utilService/serviceProductos";
+import { userStore } from '../stores/userStore';
 
 export default {
     name: "BajaProductoView",
@@ -41,7 +45,8 @@ export default {
     },
     data: () => ({
         items: [],
-        serviceProductos: new serviceProductos()
+        serviceProductos: new serviceProductos(),
+        userStore
     }),
     
     methods: {
@@ -68,6 +73,15 @@ export default {
     padding: 0rem 2rem;
     margin: 2rem;
     border-radius: 1rem;
+}
+.advertencia {
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    max-width: 30rem;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 1rem;
+    margin-top: 7rem;
 }
 .contenedor {    
     margin-top: 7rem;

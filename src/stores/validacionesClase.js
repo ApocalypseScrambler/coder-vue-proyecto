@@ -111,6 +111,6 @@ export class ValidacionTelefono extends Validacion {
   }
 
   telefonoSinErrores() {
-    return !this.campoVacio() && !this.telefonoInvalido() &&!this.demasiadoCorto()
+    return !this.campoVacio() && !this.telefonoInvalido() && !this.demasiadoCorto()
   }
 }
