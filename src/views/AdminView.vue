@@ -1,12 +1,13 @@
 <template>
     <div class="admin">
-        <div class="tabla" v-if="userStore.usuarioIsAdmin"">
-            <h1> {{ userStore.usuarioLogueado === 'Login' ? "Login" : "Mis Datos" }} </h1>
+        <div class="tabla" v-if="userStore.usuarioIsAdmin">
+            <h1> {{ texto }} </h1>
             <form @submit.prevent="LogOut()">
                 <div class="opcionesUsuario">
                     <button class="btn btn-primary"><router-link to="/AltaProducto" style="color: white;">Alta
                             Producto</router-link></button>
-                    <button class="btn btn-primary"><router-link to="/EliminarProducto" style="color: white;">Modificar/Eliminar
+                    <button class="btn btn-primary"><router-link to="/EliminarProducto"
+                            style="color: white;">Modificar/Eliminar
                             Producto</router-link></button>
                 </div>
                 <button class="btn btn-primary misPedidos"><router-link to="/Pedidos" style="color: white;">Pedidos de
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import { userStore } from '../stores/userStore';
+import { userStore } from '../stores/modules/userStore';
 
 export default {
     name: "AdminView",
@@ -34,6 +35,11 @@ export default {
     }),
     mounted() {
         window.scroll(0, 0)
+    },
+    computed: {
+        texto() {
+            return this.userStore.ususarioLogueado || "Mis Datos"
+        }
     },
     methods: {
         LogOut() {
@@ -48,11 +54,12 @@ export default {
 
 <style scoped>
 .tabla {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  width: 30%;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 30%;
 }
+
 .botones {
     display: flex;
     justify-content: space-around;

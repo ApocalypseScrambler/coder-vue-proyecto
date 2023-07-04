@@ -9,7 +9,7 @@
 
 <script>
 import ax from 'dedalo-ax'
-import { userStore } from "../stores/userStore";
+import { userStore } from "../stores/modules/userStore";
 import ComponenteTabla from '../components/ComponenteTabla.vue';
 
 export default {

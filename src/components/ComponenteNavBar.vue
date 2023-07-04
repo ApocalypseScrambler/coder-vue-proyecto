@@ -53,8 +53,8 @@
 
 <script>
 import router from '../router'
-import { cartStore } from "../stores/cartStore";
-import { userStore } from '../stores/userStore';
+import { cartStore } from "../stores/modules/cartStore";
+import { userStore } from '../stores/modules/userStore';
 import CarritoIcono from '../components/icons/CarritoIcono.vue';
 import HamburguesaIcono from '../components/icons/HamburguesaIcono.vue';
 import PersonaIcono from '../components/icons/PersonaIcono.vue';

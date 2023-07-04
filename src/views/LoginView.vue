@@ -1,9 +1,8 @@
 <template>
   <div class="login">
     <div class="tabla">
-      <h1> {{ userStore.usuarioLogueado === 'Login' ? "Login" : "Mis Datos" }} </h1>
-      <form class="row g-3 needs-validation" novalidate
-        @submit.prevent="LogIn()">
+      <h1> {{ texto }} </h1>
+      <form class="row g-3 needs-validation" novalidate @submit.prevent="LogIn()">
         <input v-model="usuario" placeholder="Usuario">
         <input v-model="password" placeholder="Contraseña" type="password">
         <p v-if="errorMessage"> {{ errorMessage }}</p>
@@ -19,7 +18,7 @@
 </template>
   
 <script>
-import { userStore } from "../stores/userStore";
+import { userStore } from "../stores/modules/userStore";
 import serviceUsuarios from "../utilService/serviceUsuarios";
 import ax from 'dedalo-ax'
 
@@ -35,6 +34,11 @@ export default {
   }),
   mounted() {
     window.scroll(0, 0)
+  },
+  computed: {
+    texto() {
+      return this.userStore.ususarioLogueado || "Mis Datos"
+    }
   },
   methods: {
     async LogIn() {
@@ -67,7 +71,6 @@ export default {
 </script>
 
 <style scoped>
-
 .tabla {
   background: white;
   padding: 1rem;

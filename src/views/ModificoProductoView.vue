@@ -44,7 +44,7 @@
 <script>
 
 import serviceProductos from "../utilService/serviceProductos";
-import { userStore } from '../stores/userStore';
+import { userStore } from '../stores/modules/userStore';
 
 export default {
     name: "ModificoProductoView",

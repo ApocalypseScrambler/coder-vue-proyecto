@@ -47,7 +47,7 @@
   
 <script>
 import { cartStore } from "@/stores/cartStore";
-import { userStore } from "../stores/userStore";
+import { userStore } from "../stores/modules/userStore";
 import { formattedDate } from "../utilService/helpers"
 import ax from 'dedalo-ax'
 

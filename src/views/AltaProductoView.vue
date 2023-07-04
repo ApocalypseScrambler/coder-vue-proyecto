@@ -39,7 +39,7 @@
     
 <script>
 
-import { userStore } from '../stores/userStore';
+import { userStore } from '../stores/modules/userStore';
 import serviceProductos from "../utilService/serviceProductos";
 
 
