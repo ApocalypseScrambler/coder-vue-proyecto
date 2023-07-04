@@ -3,6 +3,7 @@ export const userStore = {
   usuario: [],
   usuarioLogueado: "Login",
   usuarioIsAdmin: false,
+  productoID: 0,
 
   findUser(usuario) {
     const user = this.usuarios.find((user) => user.usuario === usuario);

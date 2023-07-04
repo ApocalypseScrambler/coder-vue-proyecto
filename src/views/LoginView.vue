@@ -2,7 +2,7 @@
   <div class="login">
     <div class="tabla">
       <h1> {{ userStore.usuarioLogueado === 'Login' ? "Login" : "Mis Datos" }} </h1>
-      <form v-if="userStore.usuarioLogueado === 'Login'" class="row g-3 needs-validation" novalidate
+      <form class="row g-3 needs-validation" novalidate
         @submit.prevent="LogIn()">
         <input v-model="usuario" placeholder="Usuario">
         <input v-model="password" placeholder="Contraseña" type="password">
@@ -12,25 +12,7 @@
           <button class="btn btn-primary"><router-link :to="{ name: 'registro-view' }"
               style="color: white;">Registrarse</router-link></button>
         </p>
-
         <button class="btn btn-primary" type="submit">Ingresar</button>
-      </form>
-      <form v-else @submit.prevent="LogOut()">
-        <div class="opcionesUsuario" v-if="userStore.usuarioIsAdmin === true">
-          <button class="btn btn-primary"><router-link to="/AltaProducto" style="color: white;">Alta
-              Producto</router-link></button>
-          <button class="btn btn-primary"><router-link to="/ModificarProducto" style="color: white;">Modificar
-              Producto</router-link></button>
-          <button class="btn btn-primary"><router-link to="/EliminarProducto" style="color: white;">Eliminar
-              Producto</router-link></button>
-        </div>
-        <button class="btn btn-primary misPedidos"><router-link to="/Pedidos" style="color: white;"> {{
-          userStore.usuarioIsAdmin === false ? "Mis Pedidos" : "Pedidos de Usuarios" }} </router-link></button>
-        <p>¿ Desea Salir ?</p>
-        <div class="botones">
-          <button type="submit" class="btn btn-primary" @click="LogOut()">Si</button>
-          <button class="btn btn-primary"><router-link to="/" style="color: white;">No</router-link></button>
-        </div>
       </form>
     </div>
   </div>
@@ -77,11 +59,6 @@ export default {
         console.error(error);
         this.errorMessage = 'Error al realizar la solicitud.';
       }
-    },
-    LogOut() {
-      this.userStore.usuarioLogueado = "Login"
-      this.userStore.usuarioIsAdmin = false
-      this.$router.push('/')
     }
   },
 }
@@ -90,31 +67,12 @@ export default {
 </script>
 
 <style scoped>
-a {
-  color: black;
-}
 
 .tabla {
   background: white;
   padding: 1rem;
   border-radius: 8px;
   width: 30%;
-}
-
-.botones {
-  display: flex;
-  justify-content: space-around;
-}
-
-.opcionesUsuario {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.misPedidos {
-  margin: 1rem 0rem 1rem 0rem;
-  width: 100%;
 }
 
 h1,

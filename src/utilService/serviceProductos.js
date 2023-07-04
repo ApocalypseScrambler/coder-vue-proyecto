@@ -47,7 +47,7 @@ export default class ServiceProductos {
   /* PUT */
   async actualizarProducto(producto, id) {
     try {
-      return await ax.put(this.url + "/" + id, producto);
+      return await ax.put(this.url + '/' + id, producto);
     } catch (error) {
       console.error("Error en actualizarProducto: " + error.message);
       errorMessage = 'Error al actualizar el producto.';

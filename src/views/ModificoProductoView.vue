@@ -1,15 +1,7 @@
 <template>
     <div>
-        <div class="modificarProducto"  v-if="userStore.usuarioIsAdmin === true">
+        <div class="modificarProducto"  v-if="userStore.usuarioIsAdmin">
             <h2 style="color: white;">Modificación de Producto</h2>
-            <div class="formulario">
-                <label for="idProducto">
-                    Id Producto:
-                    <input type="text" id="idProducto" v-model="producto.id" placeholder="1">
-                </label>
-                <p v-if="errorMessage"> {{ errorMessage }}</p>
-                <button class="btn btn-primary" @click="buscarProducto()">Buscar</button>
-            </div>
             <div class="formulario">
 
                 <label for="nombre">
@@ -70,22 +62,23 @@ export default {
     }),
 
     mounted() {
-        window.scroll(0, 0)
+        window.scroll(0, 0),
+        this.buscarProducto()
     },
     methods: {
         async buscarProducto() {
-            this.producto = await this.serviceProductos.obtenerProducto(this.producto.id)
+            this.producto = await this.serviceProductos.obtenerProducto(userStore.productoID)
             console.log(this.producto)
             this.errorMessage = this.serviceProductos.errorMessage
             console.log(this.errorMessage)
         },
         async guardarProducto() {
-            const res = await this.serviceProductos.guardarProducto(this.producto)
+            const res = await this.serviceProductos.actualizarProducto(this.producto, this.producto.id)
             console.log(res)
             alert('Producto Actualizado')
             Object.keys(this.producto).forEach((key) => (this.producto[key] = ""));
-            window.scroll(0, 0)
             this.errorMessage = this.serviceProductos.errorMessage
+            this.$router.push('/EliminarProducto')
         }
     }
 }

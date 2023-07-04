@@ -11,17 +11,38 @@
 
       <ul class="logos">
         <li class="btn btn-light boton"><router-link to="/">
-          <i><HamburguesaIcono /></i>
-          Productos</router-link></li>
-        <li class="btn btn-light boton"><router-link :to="{ name: 'login-view' }">
-          <i class="icono"><PersonaIcono /></i>
-          {{ userStore.usuarioLogueado }} </router-link>
-          <p>{{ userStore.usuarioIsAdmin ? "Administrador" : "" }}</p>
+            <i>
+              <HamburguesaIcono />
+            </i>
+            Productos</router-link></li>
+        <li v-show="userStore.usuarioLogueado === 'Login'" class="btn btn-light boton"><router-link
+            :to="{ name: 'login-view' }">
+            <i class="icono">
+              <PersonaIcono />
+            </i>
+            Login</router-link>
+        </li>
+        <li v-show="userStore.usuarioIsAdmin && userStore.usuarioLogueado != 'Login'" class="btn btn-light boton">
+          <router-link :to="{ name: 'admin-view' }">
+            <i class="icono">
+              <PersonaIcono />
+            </i>
+            {{ userStore.usuarioLogueado }} </router-link>
+          <p>Administrador</p>
+        </li>
+        <li v-show="!userStore.usuarioIsAdmin && userStore.usuarioLogueado != 'Login'" class="btn btn-light boton">
+          <router-link :to="{ name: 'user-view' }">
+            <i class="icono">
+              <PersonaIcono />
+            </i>
+            {{ userStore.usuarioLogueado }} </router-link>
         </li>
         <li class="btn btn-light boton">
           <router-link :to="{ name: 'carrito-view' }">
-            <i><CarritoIcono /></i>
-          Carrito</router-link>
+            <i>
+              <CarritoIcono />
+            </i>
+            Carrito</router-link>
           <div class="contadorCarrito">{{ carritoCantidad }}</div>
         </li>
       </ul>
@@ -50,7 +71,7 @@ export default {
     carritoCantidad() {
       return this.cartStore.carritoCantidad()
     },
-    
+
   },
 }
 
@@ -58,7 +79,7 @@ export default {
 
 <style scoped>
 li {
-  list-style: none!important;
+  list-style: none !important;
 }
 
 p {
@@ -70,13 +91,16 @@ p {
 a {
   font-weight: 700;
 }
- .navbar{
-    position: fixed;
+
+.navbar {
+  position: fixed;
 }
+
 .icono {
   width: 40px;
   height: 30px;
 }
+
 .contadorCarrito {
   border-radius: 50%;
   width: 2.2rem;
@@ -114,5 +138,4 @@ nav {
 .boton {
   height: 3rem;
   border: 1px solid black;
-}
-</style>
+}</style>

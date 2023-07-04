@@ -1,6 +1,6 @@
 <template>
     <div class="altaProducto">
-        <div class="formulario" v-if="userStore.usuarioIsAdmin === true">
+        <div class="formulario" v-if="userStore.usuarioIsAdmin">
             <h2>Alta de Nuevo Producto</h2>
             <label for="nombre">
                 Nombre Producto:

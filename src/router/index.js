@@ -5,6 +5,8 @@ Vue.use(VueRouter)
 
 import ProductosView from "../views/ProductosView.vue"
 import LoginView from "../views/LoginView.vue"
+import AdminView from "../views/AdminView.vue"
+import UserView from "../views/UserView.vue"
 import RegistroView from "../views/RegistroView.vue"
 import CarritoView from "../views/CarritoView.vue"
 import PedidosView from "../views/PedidosView.vue"
@@ -26,6 +28,16 @@ const router = new VueRouter({
       path: "/Login",
       name: "login-view",
       component: LoginView
+    },
+    {
+      path: "/User",
+      name: "user-view",
+      component: UserView
+    },
+    {
+      path: "/Admin",
+      name: "admin-view",
+      component: AdminView
     },
     {
       path: "/Registro",
